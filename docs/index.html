@@ -91,18 +91,40 @@
     <script>
         let rawData = [];
         let isInverted = false;
-        const supportedCurrencies = ["USD", "EUR", "JPY", "GBP", "CAD", "MXN"];
 
-        function populateCustomSelectors() {
+        async function loadSupportedCurrencies() {
+            try {
+                const response = await fetch('http://localhost:9000/api/supported-currencies');
+                if (!response.ok) throw new Error('Failed to fetch supported currencies');
+                const payload = await response.json();
+                return payload.currencies || [];
+            } catch (error) {
+                console.error('Cannot load supported currencies', error);
+                return [
+                    { code: 'USD', name: 'United States Dollar' },
+                    { code: 'EUR', name: 'Euro' },
+                    { code: 'JPY', name: 'Japanese Yen' },
+                    { code: 'GBP', name: 'Great British Pound' },
+                    { code: 'CAD', name: 'Canadian Dollar' },
+                    { code: 'MXN', name: 'Mexican Peso' }
+                ];
+            }
+        }
+
+        async function populateCustomSelectors() {
             const baseSelect = document.getElementById('custom-base');
             const targetSelect = document.getElementById('custom-target');
+
+            const currencies = await loadSupportedCurrencies();
 
             baseSelect.innerHTML = '';
             targetSelect.innerHTML = '';
 
-            supportedCurrencies.forEach(cur => {
-                baseSelect.insertAdjacentHTML('beforeend', `<option value="${cur}">${cur}</option>`);
-                targetSelect.insertAdjacentHTML('beforeend', `<option value="${cur}">${cur}</option>`);
+            currencies.forEach(entry => {
+                const c = entry.code;
+                const n = entry.name;
+                baseSelect.insertAdjacentHTML('beforeend', `<option value="${c}">${c} - ${n}</option>`);
+                targetSelect.insertAdjacentHTML('beforeend', `<option value="${c}">${c} - ${n}</option>`);
             });
         }
 
@@ -234,7 +256,7 @@ async function loadRates() {
             resDiv.innerHTML = `<p class="text-gray-600 font-medium">Loading...</p>`;
 
             try {
-                const resp = await fetch('/api/compare-custom', {
+                const resp = await fetch('http://localhost:9000/api/compare-custom', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ base, quote: target })
