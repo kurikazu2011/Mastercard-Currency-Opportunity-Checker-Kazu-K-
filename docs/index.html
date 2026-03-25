@@ -13,23 +13,31 @@
         .text-wise-green { color: #00b9ff; }
         .bg-success { background-color: #16a34a; }
         .bg-danger { background-color: #dc2626; }
+
+        @media (max-width: 640px) {
+            .mobile-header { flex-direction: column !important; align-items: flex-start !important; gap: 0.75rem; }
+            .mobile-header .text-right { text-align: left !important; width: 100%; }
+            .mobile-small-gap { gap: 0.75rem !important; }
+            .mobile-selects { width: 100% !important; }
+            #rates-grid .card { min-height: 260px; }
+        }
     </style>
 </head>
 <body class="text-gray-800 p-6 md:p-12">
 
-    <div class="max-w-6xl mx-auto">
-        <header class="flex justify-between items-end mb-10 border-b pb-4">
+    <div class="max-w-6xl mx-auto w-full">
+        <header class="mobile-header flex justify-between items-end mb-10 border-b pb-4">
             <div>
-                <h1 class="text-4xl font-bold text-wise-blue mb-2">Exchange Rate Opportunity</h1>
+                <h1 class="text-3xl sm:text-4xl font-bold text-wise-blue mb-2">Exchange Rate Opportunity</h1>
                 <p class="text-gray-500 text-sm">Compare Mastercard and Market rates instantly.</p>
             </div>
-            <div class="text-right">
+            <div class="text-right sm:text-right text-left">
                 <p class="text-xs text-gray-400">Last updated</p>
                 <p id="update-time" class="font-semibold text-gray-700">Loading...</p>
             </div>
         </header>
 
-        <div class="flex justify-between items-center mb-6">
+        <div class="mobile-small-gap flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-3">
             <h2 class="text-xl font-bold text-wise-blue">Monitored Pairs</h2>
             <button id="toggle-invert" class="text-sm font-semibold text-blue-600 bg-blue-50 py-2 px-4 rounded-full hover:bg-blue-100 transition">
                 ⇄ Invert Base/Target
