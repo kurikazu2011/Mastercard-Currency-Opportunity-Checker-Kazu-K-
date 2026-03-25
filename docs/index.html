@@ -28,7 +28,7 @@
         
         .highlight-negative {
             font-weight: bold;
-            color: #374151;
+            color: #6b7280;
         }
 
         .tooltip-container { position: relative; display: inline-block; }
@@ -66,7 +66,7 @@
             <div>
                 <h1 class="text-3xl sm:text-4xl font-bold text-wise-blue mb-2">Exchange Rate Comparison</h1>
                 <p class="text-gray-500 text-sm tooltip-container">
-                    Compare Mastercard rates with live market rates and quickly spot better exchange opportunities.
+                    Compare <a href="https://www.mastercard.com/us/en/personal/get-support/currency-exchange-rate-converter.html" target="_blank" rel="noopener noreferrer" class="text-gray-500 underline" style="color: inherit; text-decoration: underline;">Mastercard rates</a> with live market rates and quickly spot better exchange opportunities.
                     <span class="tooltip-box">
                         Mastercard exchange rates are updated only a few times a day. When the market moves significantly, this can create opportunities to make purchases or cash advances at a more favorable rate than the live market rate.<br><br>
                         This dashboard automatically retrieves Mastercard rates via API and compares them with near real-time exchange rates from Yahoo Finance. On Mastercard’s official site, these rates can only be checked manually each time, but this page makes the comparison visible instantly.
@@ -110,10 +110,9 @@
             const diffHour = Math.floor(diffMin / 60);
             
             if (diffSec < 60) {
-                const unit = diffSec === 1 ? 'second' : 'seconds';
-                return `Updated ${diffSec} ${unit} ago`;
+                return `Updated 0 min ago`;
             } else if (diffMin < 60) {
-                const unit = diffMin === 1 ? 'minute' : 'minutes';
+                const unit = diffMin === 1 ? 'min' : 'mins';
                 return `Updated ${diffMin} ${unit} ago`;
             } else if (diffHour < 24) {
                 const unit = diffHour === 1 ? 'hour' : 'hours';
@@ -146,9 +145,9 @@
             const target = parts[1];
             
             if (isOpportunity) {
-                return `This is <span class="font-bold text-green-600">a good time</span> to buy ${target} with ${base}.`;
+                return `This is <span class="highlight-positive">a good time</span> to buy ${base} with ${target}.`;
             } else {
-                return `This is <span class="font-bold text-gray-700">not a good time</span> to buy ${target} with ${base}.`;
+                return `This is <span class="highlight-negative">not a good time</span> to buy ${base} with ${target}.`;
             }
         }
         
@@ -214,24 +213,24 @@ async function loadRates() {
                         </div>
                         <div class="grid grid-cols-2 gap-4 mb-4">
                             <div>
-                                <p class="text-xs text-gray-500 mb-1 font-semibold uppercase">Mastercard Rate</p>
+                                <p class="text-xs text-gray-500 mb-1 font-semibold uppercase">MASTERCARD<br>RATE</p>
                                 <p class="text-xl font-bold text-gray-800">${rateObj.mastercard_rate.toFixed(4)}</p>
                             </div>
                             <div>
-                                <p class="text-xs text-gray-500 mb-1 font-semibold uppercase">Market Rate (Yahoo Finance)</p>
+                                <p class="text-xs text-gray-500 mb-1 font-semibold uppercase">MARKET RATE<br>(YAHOO FINANCE)</p>
                                 <p class="text-xl font-bold text-gray-800">${rateObj.market_rate.toFixed(4)}</p>
                             </div>
                         </div>
                         <div class="pt-4 border-t border-gray-100 flex justify-between items-center">
-                            <span class="text-sm ${isOpp ? 'text-gray-500' : 'text-muted-gray'}">Difference vs Market:</span>
+                            <span class="text-xs text-gray-500 font-semibold uppercase">Difference vs Market:</span>
                             <span class="text-sm font-bold ${diffTextColor}">
                                 ${percentDiff}
                             </span>
                         </div>
-                        <div class="mt-4 text-xs ${isOpp ? 'text-gray-600' : 'text-muted-gray'}">
+                        <div class="mt-4 text-xs ${isOpp ? 'text-gray-600' : 'text-danger'}">
                             ${diff < 0 ? 'Mastercard rate is <span class="font-bold text-green-600">lower</span> than the market rate.' : 'Mastercard rate is <span class="font-bold ' + (isOpp ? 'text-gray-600' : 'text-danger') + '">higher</span> than the market rate.'}
                         </div>
-                        <div class="mt-2 text-xs ${isOpp ? 'text-gray-700 font-medium' : 'text-muted-gray'}">
+                        <div class="mt-2 text-xs ${isOpp ? 'text-gray-600' : 'text-danger'}">
                             ${secondLine}
                         </div>
                     </div>
