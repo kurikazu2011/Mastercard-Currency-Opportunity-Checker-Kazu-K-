@@ -72,10 +72,11 @@
         let rawData = [];
         let isInverted = false;
 
-        // 今回は12ペア生データがあるので、配列名で切り替える
-        const basePairs = ["USD/EUR", "USD/CAD", "USD/MXN", "USD/JPY", "USD/GBP", "EUR/GBP"];
-        const invertedPairs = ["EUR/USD", "CAD/USD", "MXN/USD", "JPY/USD", "GBP/USD", "GBP/EUR"];
-
+// 通貨ペアの表示順序を定義。先頭（USD/JPY）が左上になります。
+        const basePairs = ["USD/JPY", "USD/EUR", "USD/CAD", "USD/MXN", "USD/GBP", "EUR/GBP"];
+        // 入れ替えモード（Invert）の時の対応するペアの順序
+        const invertedPairs = ["JPY/USD", "EUR/USD", "CAD/USD", "MXN/USD", "GBP/USD", "GBP/EUR"];
+        
 async function loadRates() {
             try {
                 const response = await fetch('latest_rates.json');
