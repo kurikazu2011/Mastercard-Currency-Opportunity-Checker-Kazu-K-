@@ -76,12 +76,19 @@
         const basePairs = ["USD/EUR", "USD/CAD", "USD/MXN", "USD/JPY", "USD/GBP", "EUR/GBP"];
         const invertedPairs = ["EUR/USD", "CAD/USD", "MXN/USD", "JPY/USD", "GBP/USD", "GBP/EUR"];
 
-        async function loadRates() {
+async function loadRates() {
             try {
                 const response = await fetch('latest_rates.json');
                 if (!response.ok) throw new Error("Network response was not ok");
                 const data = await response.json();
-                document.getElementById('update-time').innerText = data.fetched_at_utc + ' UTC';
+                
+                // Pythonから来た "YYYY-MM-DD HH:MM:SS" を "YYYY-MM-DDTHH:MM:SSZ" に整形してUTCとして認識させる
+                const utcDateStr = data.fetched_at_utc.replace(' ', 'T') + 'Z';
+                const localDate = new Date(utcDateStr);
+                
+                // ブラウザのローカル時刻（閲覧者のタイムゾーン）で表示
+                document.getElementById('update-time').innerText = localDate.toLocaleString();
+
                 rawData = data.rates;
                 renderGrid();
             } catch (error) {
