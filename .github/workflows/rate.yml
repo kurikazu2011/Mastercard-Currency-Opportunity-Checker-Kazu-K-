@@ -1,0 +1,37 @@
+name: Mastercard Rate Check
+
+on:
+  workflow_dispatch: # 手動でボタンを押して実行するためのトリガー
+
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 変更されたJSONやDBファイルをリポジトリに保存（コミット）するために必要
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run rate checker
+        run: python ratechecker.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/latest_rates.json docs/fx_rates.db
+          # データに更新がある場合のみコミットしてプッシュする
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update exchange rates"
+          git push
