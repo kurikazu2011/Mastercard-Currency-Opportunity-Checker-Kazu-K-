@@ -30,6 +30,37 @@
             color: #6b7280;
         }
 
+        .drag-handle {
+            cursor: grab;
+            color: #9ca3af;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+        .drag-handle:active {
+            cursor: grabbing;
+        }
+
+        .switch-button {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background-color: #f3f4f6;
+            color: #374151;
+            border: none;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.2s;
+        }
+        .switch-button:hover {
+            background-color: #e5e7eb;
+        }
+
         .tooltip-container { position: relative; display: inline-block; }
         .tooltip-box {
             display: none;
@@ -80,9 +111,7 @@
 
         <div class="mobile-small-gap flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-3">
             <h2 class="text-xl font-bold text-wise-blue">Tracked Currency Pairs</h2>
-            <button id="toggle-invert" class="text-sm font-semibold text-blue-600 bg-blue-50 py-2 px-4 rounded-full hover:bg-blue-100 transition">
-                ⇄ Switch Base and Quote Currency
-            </button>
+            <p class="text-sm text-gray-500">Use ⇄ on each card to switch currencies</p>
         </div>
 
         <div id="rates-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -94,11 +123,33 @@
         let rawData = [];
         let isInverted = false;
         let fetchedAtDate = null;
+        let cardOrder = [];
 
 // 通貨ペアの表示順序を定義。先頭（USD/JPY）が左上になります。
         const basePairs = ["USD/JPY", "USD/EUR", "USD/CAD", "USD/MXN", "USD/GBP", "EUR/GBP"];
         // 入れ替えモード（Invert）の時の対応するペアの順序
         const invertedPairs = ["JPY/USD", "EUR/USD", "CAD/USD", "MXN/USD", "GBP/USD", "GBP/EUR"];
+        
+        // Load card order from localStorage
+        function loadCardOrder() {
+            const saved = localStorage.getItem('cardOrder');
+            if (saved) {
+                cardOrder = JSON.parse(saved);
+            } else {
+                cardOrder = [...basePairs];
+            }
+        }
+        
+        // Save card order to localStorage
+        function saveCardOrder() {
+            localStorage.setItem('cardOrder', JSON.stringify(cardOrder));
+        }
+        
+        // Invert a currency pair
+        function invertPair(pair) {
+            const [base, target] = pair.split('/');
+            return `${target}/${base}`;
+        }
         
         // Generate relative time display
         function getRelativeTime(fromDate) {
@@ -168,6 +219,7 @@ async function loadRates() {
                 setInterval(updateRelativeTimeDisplay, 1000);
 
                 rawData = data.rates;
+                loadCardOrder();
                 renderGrid();
             } catch (error) {
                 console.error("Failed to load rates:", error);
@@ -179,15 +231,15 @@ async function loadRates() {
             const grid = document.getElementById('rates-grid');
             grid.innerHTML = '';
 
-// 現在のモード（通常 or 逆転）に合わせて表示対象のペア名を決定
-            const targetPairNames = isInverted ? invertedPairs : basePairs;
+            // Use cardOrder for display
+            const targetPairNames = cardOrder.map(pair => isInverted ? invertPair(pair) : pair);
             
             // 指定した配列（targetPairNames）の順番通りにデータを並べ替えて抽出
             const pairsToDisplay = targetPairNames.map(pairName => 
                 rawData.find(rateObj => rateObj.pair === pairName)
             ).filter(Boolean); // データ欠損時のエラー防止
 
-            pairsToDisplay.forEach(rateObj => {
+            pairsToDisplay.forEach((rateObj, index) => {
                 if (rateObj.error) return;
 
                 const diff = rateObj.diff;
@@ -203,8 +255,9 @@ async function loadRates() {
                 const diffTextColor = isOpp ? (diff < 0 ? 'text-green-600' : 'text-gray-600') : 'text-danger';
 
                 const cardHTML = `
-                    <div class="card ${noOppClass} p-6 flex flex-col justify-between h-full border-t-4 ${borderColorClass}">
-                        <div class="flex justify-between items-start mb-4">
+                    <div class="card ${noOppClass} p-6 flex flex-col justify-between h-full border-t-4 ${borderColorClass}" draggable="true" data-pair="${rateObj.pair}" data-index="${index}">
+                        <div class="flex justify-between items-start mb-4 relative">
+                            <div class="drag-handle">⋮⋮</div>
                             <h3 class="text-2xl font-bold text-wise-blue tracking-tight">${rateObj.pair}</h3>
                             <span class="${oppColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
                                 Better Rate: ${oppText}
@@ -232,10 +285,108 @@ async function loadRates() {
                         <div class="mt-2 text-xs ${isOpp ? 'text-gray-600' : 'text-danger'}">
                             ${secondLine}
                         </div>
+                        <button class="switch-button" data-pair="${rateObj.pair}">⇄</button>
                     </div>
                 `;
                 grid.innerHTML += cardHTML;
             });
+
+            // Add event listeners for drag and drop
+            addDragAndDropListeners();
+            addSwitchListeners();
+        }
+
+        // Add drag and drop event listeners
+        function addDragAndDropListeners() {
+            const cards = document.querySelectorAll('#rates-grid .card');
+            let draggedIndex = null;
+
+            cards.forEach((card, index) => {
+                card.addEventListener('dragstart', (e) => {
+                    draggedIndex = index;
+                    e.dataTransfer.effectAllowed = 'move';
+                    card.style.opacity = '0.5';
+                });
+
+                card.addEventListener('dragend', (e) => {
+                    card.style.opacity = '1';
+                });
+
+                card.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                });
+
+                card.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    const targetIndex = index;
+                    if (draggedIndex !== null && draggedIndex !== targetIndex) {
+                        // Reorder cardOrder
+                        const [removed] = cardOrder.splice(draggedIndex, 1);
+                        cardOrder.splice(targetIndex, 0, removed);
+                        saveCardOrder();
+                        renderGrid();
+                    }
+                });
+            });
+        }
+
+        // Add switch button listeners
+        function addSwitchListeners() {
+            const switchButtons = document.querySelectorAll('.switch-button');
+            switchButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const pair = button.getAttribute('data-pair');
+                    const invertedPair = invertPair(pair);
+                    // Find the data for inverted pair
+                    const invertedData = rawData.find(rateObj => rateObj.pair === invertedPair);
+                    if (invertedData) {
+                        // Update the card content
+                        const card = button.closest('.card');
+                        updateCardContent(card, invertedData);
+                    }
+                });
+            });
+        }
+
+        // Update card content for inverted pair
+        function updateCardContent(card, rateObj) {
+            const diff = rateObj.diff;
+            const isOpp = rateObj.opportunity;
+            const oppColor = isOpp ? 'bg-success' : 'bg-danger';
+            const oppText = isOpp ? 'YES' : 'NO';
+            const borderColorClass = isOpp ? 'border-green-500' : 'border-danger';
+            const noOppClass = isOpp ? '' : 'no-opportunity';
+            
+            const percentDiff = formatPercentageDiff(rateObj.mastercard_rate, rateObj.market_rate);
+            const secondLine = generateSecondLine(rateObj.pair, isOpp);
+            
+            const diffTextColor = isOpp ? (diff < 0 ? 'text-green-600' : 'text-gray-600') : 'text-danger';
+
+            // Update pair title
+            card.querySelector('h3').textContent = rateObj.pair;
+            // Update better rate badge
+            const badge = card.querySelector('.rounded-full');
+            badge.className = `${oppColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide`;
+            badge.textContent = `Better Rate: ${oppText}`;
+            // Update border
+            card.className = `card ${noOppClass} p-6 flex flex-col justify-between h-full border-t-4 ${borderColorClass}`;
+            // Update rates
+            const rateDivs = card.querySelectorAll('.grid > div > p:last-child');
+            rateDivs[0].textContent = rateObj.mastercard_rate.toFixed(4);
+            rateDivs[1].textContent = rateObj.market_rate.toFixed(4);
+            // Update difference
+            const diffSpan = card.querySelector('.pt-4 span:last-child');
+            diffSpan.className = `text-sm font-bold ${diffTextColor}`;
+            diffSpan.textContent = percentDiff;
+            // Update explanations
+            const explanationDivs = card.querySelectorAll('.mt-4, .mt-2');
+            explanationDivs[0].innerHTML = `${diff < 0 ? 'Mastercard rate is <span class="font-bold text-green-600">lower</span> than the market rate.' : 'Mastercard rate is <span class="font-bold ' + (isOpp ? 'text-gray-600' : 'text-danger') + '">higher</span> than the market rate.'}`;
+            explanationDivs[1].innerHTML = secondLine;
+            // Update classes for explanations
+            explanationDivs[0].className = `mt-4 text-xs ${isOpp ? 'text-gray-600' : 'text-danger'}`;
+            explanationDivs[1].className = `mt-2 text-xs ${isOpp ? 'text-gray-600' : 'text-danger'}`;
         }
 
         // トグルボタンの挙動
