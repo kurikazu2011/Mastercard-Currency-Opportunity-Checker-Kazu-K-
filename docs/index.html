@@ -102,11 +102,13 @@ async function loadRates() {
             const grid = document.getElementById('rates-grid');
             grid.innerHTML = '';
 
-            // 現在のモード（通常 or 逆転）に合わせて表示対象のペア名を決定
+// 現在のモード（通常 or 逆転）に合わせて表示対象のペア名を決定
             const targetPairNames = isInverted ? invertedPairs : basePairs;
             
-            // JSONデータの中から、表示対象のペア名に合致するものだけを抽出
-            const pairsToDisplay = rawData.filter(rateObj => targetPairNames.includes(rateObj.pair));
+            // 指定した配列（targetPairNames）の順番通りにデータを並べ替えて抽出
+            const pairsToDisplay = targetPairNames.map(pairName => 
+                rawData.find(rateObj => rateObj.pair === pairName)
+            ).filter(Boolean); // データ欠損時のエラー防止
 
             pairsToDisplay.forEach(rateObj => {
                 if (rateObj.error) return;
