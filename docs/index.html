@@ -26,7 +26,7 @@
         .card-header-left {
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.25rem;
         }
 
         .drag-handle {
@@ -343,7 +343,7 @@ async function loadRates() {
             }
             sortableInstance = Sortable.create(grid, {
                 handle: '.drag-handle',
-                animation: 180,
+                animation: 200,
                 fallbackOnBody: true,
                 swapThreshold: 0.65,
                 onStart: (evt) => {
