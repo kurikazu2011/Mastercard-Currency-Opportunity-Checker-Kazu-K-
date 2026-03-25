@@ -3,15 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currency Opportunity</title>
+    <title>Mastercard Exchange Rate Comparison</title>
     <link rel="icon" type="image/png" href="assets/favicon.png?v=1">
     <link rel="apple-touch-icon" href="assets/favicon.png?v=1">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js" integrity="sha512-aI6hkBxvp+2/3UZU+onEVa6iPxHeDHNhYUBnWbhVoF1s2ykJyxGcdE+t6EkEue3PSjjEY5vDRtQZlHnZUx4qKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f7f9fa; }
-        .card { background-color: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.2s; }
+        .card { background-color: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.25s, box-shadow 0.25s; padding: 1rem; }
         .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+        .card.dragging { transform: translateY(-4px) scale(1.025); box-shadow: 0 14px 30px rgba(0,0,0,0.18); z-index: 50; }
         .card.no-opportunity { opacity: 0.92; }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            position: relative;
+        }
+
+        .card-header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .drag-handle {
+            cursor: grab;
+            color: #6b7280;
+            font-size: 0.9rem;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.2em;
+            height: 1.2em;
+            padding: 0.1rem;
+        }
+
+        .drag-handle:active {
+            cursor: grabbing;
+        }
         .text-wise-blue { color: #2e4369; }
         .text-wise-green { color: #00b9ff; }
         .bg-success { background-color: #16a34a; }
@@ -44,10 +77,10 @@
             position: absolute;
             bottom: 1rem;
             right: 1rem;
-            background-color: #f3f4f6;
-            color: #374151;
-            border: none;
-            border-radius: 50%;
+            background-color: #eef2ff;
+            color: #1f2937;
+            border: 1px solid #d1d5db;
+            border-radius: 9999px;
             width: 2rem;
             height: 2rem;
             display: flex;
@@ -55,10 +88,14 @@
             justify-content: center;
             cursor: pointer;
             font-size: 1rem;
-            transition: background-color 0.2s;
+            opacity: 1;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+            transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
         }
         .switch-button:hover {
-            background-color: #e5e7eb;
+            background-color: #e0e7ff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.14);
+            transform: translateY(-1px);
         }
 
         .tooltip-container { position: relative; display: inline-block; }
@@ -94,7 +131,7 @@
     <div class="max-w-6xl mx-auto w-full">
         <header class="mobile-header flex justify-between items-end mb-10 border-b pb-4">
             <div>
-                <h1 class="text-3xl sm:text-4xl font-bold text-wise-blue mb-2">Exchange Rate Comparison</h1>
+                <h1 class="text-3xl sm:text-4xl font-bold text-wise-blue mb-2">Mastercard Exchange Rate Comparison</h1>
                 <p class="text-gray-500 text-sm tooltip-container">
                     Compare <a href="https://www.mastercard.com/us/en/personal/get-support/currency-exchange-rate-converter.html" target="_blank" rel="noopener noreferrer" class="text-gray-500 underline" style="color: inherit; text-decoration: underline;">Mastercard rates</a> with <a href="https://finance.yahoo.com/markets/currencies/" target="_blank" rel="noopener noreferrer" class="text-gray-500 underline" style="color: inherit; text-decoration: underline;">live market rates</a> and quickly spot better exchange opportunities. Updated every 20 minutes.
                     <span class="tooltip-box">
@@ -121,9 +158,9 @@
 
     <script>
         let rawData = [];
-        let isInverted = false;
         let fetchedAtDate = null;
         let cardOrder = [];
+        let sortableInstance = null;
 
 // 通貨ペアの表示順序を定義。先頭（USD/JPY）が左上になります。
         const basePairs = ["USD/JPY", "USD/EUR", "USD/CAD", "USD/MXN", "USD/GBP", "EUR/GBP"];
@@ -256,9 +293,11 @@ async function loadRates() {
 
                 const cardHTML = `
                     <div class="card ${noOppClass} p-6 flex flex-col justify-between h-full border-t-4 ${borderColorClass}" draggable="true" data-pair="${rateObj.pair}" data-index="${index}">
-                        <div class="flex justify-between items-start mb-4 relative">
-                            <div class="drag-handle">⋮⋮</div>
-                            <h3 class="text-2xl font-bold text-wise-blue tracking-tight">${rateObj.pair}</h3>
+                        <div class="card-header">
+                            <div class="card-header-left">
+                                <span class="drag-handle" aria-label="Drag handle">⋮⋮</span>
+                                <h3 class="text-2xl font-bold text-wise-blue tracking-tight" style="margin:0; line-height:1.1">${rateObj.pair}</h3>
+                            </div>
                             <span class="${oppColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
                                 Better Rate: ${oppText}
                             </span>
@@ -283,7 +322,7 @@ async function loadRates() {
                             ${diff < 0 ? 'Mastercard rate is <span class="font-bold text-green-600">lower</span> than the market rate.' : 'Mastercard rate is <span class="font-bold ' + (isOpp ? 'text-gray-600' : 'text-danger') + '">higher</span> than the market rate.'}
                         </div>
                         <div class="mt-2 text-xs ${isOpp ? 'text-gray-600' : 'text-danger'}">
-                            ${secondLine}
+                                    ${secondLine}
                         </div>
                         <button class="switch-button" data-pair="${rateObj.pair}">⇄</button>
                     </div>
@@ -291,43 +330,29 @@ async function loadRates() {
                 grid.innerHTML += cardHTML;
             });
 
-            // Add event listeners for drag and drop
-            addDragAndDropListeners();
+            setupSortableGrid();
             addSwitchListeners();
         }
 
         // Add drag and drop event listeners
-        function addDragAndDropListeners() {
-            const cards = document.querySelectorAll('#rates-grid .card');
-            let draggedIndex = null;
-
-            cards.forEach((card, index) => {
-                card.addEventListener('dragstart', (e) => {
-                    draggedIndex = index;
-                    e.dataTransfer.effectAllowed = 'move';
-                    card.style.opacity = '0.5';
-                });
-
-                card.addEventListener('dragend', (e) => {
-                    card.style.opacity = '1';
-                });
-
-                card.addEventListener('dragover', (e) => {
-                    e.preventDefault();
-                    e.dataTransfer.dropEffect = 'move';
-                });
-
-                card.addEventListener('drop', (e) => {
-                    e.preventDefault();
-                    const targetIndex = index;
-                    if (draggedIndex !== null && draggedIndex !== targetIndex) {
-                        // Reorder cardOrder
-                        const [removed] = cardOrder.splice(draggedIndex, 1);
-                        cardOrder.splice(targetIndex, 0, removed);
-                        saveCardOrder();
-                        renderGrid();
-                    }
-                });
+        function setupSortableGrid() {
+            const grid = document.getElementById('rates-grid');
+            if (sortableInstance) {
+                sortableInstance.destroy();
+            }
+            sortableInstance = Sortable.create(grid, {
+                handle: '.drag-handle',
+                animation: 180,
+                fallbackOnBody: true,
+                swapThreshold: 0.65,
+                onStart: (evt) => {
+                    evt.item.classList.add('dragging');
+                },
+                onEnd: (evt) => {
+                    evt.item.classList.remove('dragging');
+                    cardOrder = Array.from(grid.children).map(child => child.dataset.pair);
+                    saveCardOrder();
+                }
             });
         }
 
