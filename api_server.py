@@ -1,4 +1,5 @@
 import json
+import traceback
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse
 
@@ -213,34 +214,69 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
         base = str(base).upper().strip()
         quote = str(quote).upper().strip()
 
+        print(f"[compare-custom] Received: base={base}, quote={quote}")
+
         if base == quote:
+            print(f"[compare-custom] ERROR: Same currency selected")
             self._set_headers(400)
             self.wfile.write(json.dumps({"error": "Please select two different currencies."}).encode("utf-8"))
             return
 
         if base not in SUPPORTED_CURRENCY_CODES or quote not in SUPPORTED_CURRENCY_CODES:
+            print(f"[compare-custom] ERROR: Unsupported currency - base_valid={base in SUPPORTED_CURRENCY_CODES}, quote_valid={quote in SUPPORTED_CURRENCY_CODES}")
             self._set_headers(400)
             self.wfile.write(json.dumps({"error": "This currency is not supported."}).encode("utf-8"))
             return
 
         pair_str = f"{base}/{quote}"
         if pair_str not in SUPPORTED_PAIRS:
-            self._set_headers(400)
-            self.wfile.write(json.dumps({"error": "Rate unavailable for this pair."}).encode("utf-8"))
-            return
+            print(f"[compare-custom] WARNING: Pair not in precomputed list, will attempt anyway. pair={pair_str}")
+
+        mc_rate = None
+        market_rate = None
+        mc_error = None
+        yahoo_error = None
 
         try:
+            print(f"[compare-custom] Fetching Mastercard rate...")
             session = requests.Session()
             mc_rate = get_mastercard_rate(session, base, quote)
-            market_rate = get_market_rate(base, quote)
+            print(f"[compare-custom] Mastercard rate retrieved: {mc_rate}")
         except Exception as e:
+            mc_error = str(e)
+            print(f"[compare-custom] ERROR fetching Mastercard: {mc_error}")
+            traceback.print_exc()
+
+        try:
+            print(f"[compare-custom] Fetching Yahoo market rate...")
+            market_rate = get_market_rate(base, quote)
+            print(f"[compare-custom] Market rate retrieved: {market_rate}")
+        except Exception as e:
+            yahoo_error = str(e)
+            print(f"[compare-custom] ERROR fetching Yahoo: {yahoo_error}")
+            traceback.print_exc()
+
+        if mc_error and yahoo_error:
+            print(f"[compare-custom] FAILED: Both Mastercard and Yahoo")
             self._set_headers(502)
-            self.wfile.write(json.dumps({"error": "Rate unavailable for this pair."}).encode("utf-8"))
+            self.wfile.write(json.dumps({"error": "Failed to fetch both Mastercard and market rates."}).encode("utf-8"))
+            return
+        elif mc_error:
+            print(f"[compare-custom] FAILED: Mastercard only")
+            self._set_headers(502)
+            self.wfile.write(json.dumps({"error": "Failed to fetch Mastercard rate."}).encode("utf-8"))
+            return
+        elif yahoo_error:
+            print(f"[compare-custom] FAILED: Yahoo only")
+            self._set_headers(502)
+            self.wfile.write(json.dumps({"error": "Failed to fetch market rate."}).encode("utf-8"))
             return
 
         diff = mc_rate - market_rate
         better_rate = diff < 0
         message = "Mastercard rate is lower than the market rate." if better_rate else "Mastercard rate is higher than the market rate."
+
+        print(f"[compare-custom] SUCCESS: pair={pair_str}, diff={diff:.6f}, better_rate={better_rate}")
 
         response = {
             "pair": pair_str,
