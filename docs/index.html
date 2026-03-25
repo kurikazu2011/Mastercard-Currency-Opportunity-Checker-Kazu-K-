@@ -15,6 +15,25 @@
         .bg-success { background-color: #16a34a; }
         .bg-danger { background-color: #dc2626; }
 
+        .tooltip-container { position: relative; display: inline-block; }
+        .tooltip-box {
+            display: none;
+            position: absolute;
+            top: 120%;
+            left: 0;
+            z-index: 10;
+            max-width: 320px;
+            background-color: #112244;
+            color: #f8fafc;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            font-size: 0.825rem;
+            line-height: 1.4;
+            white-space: normal;
+        }
+        .tooltip-container:hover .tooltip-box { display: block; }
+
         @media (max-width: 640px) {
             .mobile-header { flex-direction: column !important; align-items: flex-start !important; gap: 0.75rem; }
             .mobile-header .text-right { text-align: left !important; width: 100%; }
@@ -30,7 +49,13 @@
         <header class="mobile-header flex justify-between items-end mb-10 border-b pb-4">
             <div>
                 <h1 class="text-3xl sm:text-4xl font-bold text-wise-blue mb-2">Exchange Rate Comparison</h1>
-                <p class="text-gray-500 text-sm">Compare Mastercard rates with live market rates and quickly spot better exchange opportunities.</p>
+                <p class="text-gray-500 text-sm tooltip-container">
+                    Compare Mastercard rates with live market rates and quickly spot better exchange opportunities.
+                    <span class="tooltip-box">
+                        Mastercard exchange rates are updated only a few times a day. When the market moves significantly, this can create opportunities to make purchases or cash advances at a more favorable rate than the live market rate.<br><br>
+                        This dashboard automatically retrieves Mastercard rates via API and compares them with near real-time exchange rates from Yahoo Finance. On Mastercard’s official site, these rates can only be checked manually each time, but this page makes the comparison visible instantly.
+                    </span>
+                </p>
             </div>
             <div class="text-right sm:text-right text-left">
                 <p class="text-xs text-gray-400">Last updated</p>
@@ -152,7 +177,7 @@ async function loadRates() {
                             </span>
                         </div>
                         <div class="mt-4 text-xs text-gray-600">
-                            ${diff < 0 ? 'Mastercard rate is lower than the market rate (better for this pair).' : 'Mastercard rate is higher than the market rate.'}
+                            ${diff < 0 ? 'Mastercard rate is <span class="font-bold text-green-600">lower</span> than the market rate.' : 'Mastercard rate is <span class="font-bold text-red-600">higher</span> than the market rate.'}
                         </div>
                     </div>
                 `;
