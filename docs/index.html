@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="assets/favicon.png?v=1">
     <link rel="apple-touch-icon" href="assets/favicon.png?v=1">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js" integrity="sha512-aI6hkBxvp+2/3UZU+onEVa6iPxHeDHNhYUBnWbhVoF1s2ykJyxGcdE+t6EkEue3PSjjEY5vDRtQZlHnZUx4qKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f7f9fa; }
         .card { background-color: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.25s, box-shadow 0.25s; padding: 1rem; }
@@ -240,10 +240,13 @@
         
 async function loadRates() {
             try {
-                // ファイル名の末尾にランダムな現在時刻（?t=...）をつけることで、ブラウザのキャッシュを強制的に無効化します
-                const response = await fetch('latest_rates.json?t=' + new Date().getTime());
-                if (!response.ok) throw new Error("Network response was not ok");
+                const url = 'latest_rates.json?t=' + new Date().getTime();
+                console.log('Fetching:', url);
+                const response = await fetch(url);
+                console.log('Response status:', response.status, response.statusText);
+                if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 const data = await response.json();
+                console.log('Data loaded:', data);
                 
                 // DB(JSON)に記録された正確なUTC時刻を、閲覧者のローカルタイムに変換
                 const utcDateStr = data.fetched_at_utc.replace(' ', 'T') + 'Z';
@@ -260,7 +263,7 @@ async function loadRates() {
                 renderGrid();
             } catch (error) {
                 console.error("Failed to load rates:", error);
-                document.getElementById('rates-grid').innerHTML = '<p class="text-red-500">Failed to load data.</p>';
+                document.getElementById('rates-grid').innerHTML = '<p class="text-red-500">Failed to load data: ' + error.message + '</p>';
             }
         }
 
