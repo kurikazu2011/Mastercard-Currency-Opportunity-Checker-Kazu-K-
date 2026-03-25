@@ -232,7 +232,7 @@ async function loadRates() {
             grid.innerHTML = '';
 
             // Use cardOrder for display
-            const targetPairNames = cardOrder.map(pair => isInverted ? invertPair(pair) : pair);
+            const targetPairNames = [...cardOrder];
             
             // 指定した配列（targetPairNames）の順番通りにデータを並べ替えて抽出
             const pairsToDisplay = targetPairNames.map(pairName => 
@@ -338,63 +338,18 @@ async function loadRates() {
                 button.addEventListener('click', (e) => {
                     e.stopPropagation();
                     const pair = button.getAttribute('data-pair');
-                    const invertedPair = invertPair(pair);
-                    // Find the data for inverted pair
-                    const invertedData = rawData.find(rateObj => rateObj.pair === invertedPair);
-                    if (invertedData) {
-                        // Update the card content
-                        const card = button.closest('.card');
-                        updateCardContent(card, invertedData);
+                    const idx = cardOrder.indexOf(pair);
+                    if (idx !== -1) {
+                        const invertedPair = invertPair(pair);
+                        cardOrder[idx] = invertedPair;
+                        saveCardOrder();
+                        renderGrid();
                     }
                 });
             });
         }
 
-        // Update card content for inverted pair
-        function updateCardContent(card, rateObj) {
-            const diff = rateObj.diff;
-            const isOpp = rateObj.opportunity;
-            const oppColor = isOpp ? 'bg-success' : 'bg-danger';
-            const oppText = isOpp ? 'YES' : 'NO';
-            const borderColorClass = isOpp ? 'border-green-500' : 'border-danger';
-            const noOppClass = isOpp ? '' : 'no-opportunity';
-            
-            const percentDiff = formatPercentageDiff(rateObj.mastercard_rate, rateObj.market_rate);
-            const secondLine = generateSecondLine(rateObj.pair, isOpp);
-            
-            const diffTextColor = isOpp ? (diff < 0 ? 'text-green-600' : 'text-gray-600') : 'text-danger';
-
-            // Update pair title
-            card.querySelector('h3').textContent = rateObj.pair;
-            // Update better rate badge
-            const badge = card.querySelector('.rounded-full');
-            badge.className = `${oppColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide`;
-            badge.textContent = `Better Rate: ${oppText}`;
-            // Update border
-            card.className = `card ${noOppClass} p-6 flex flex-col justify-between h-full border-t-4 ${borderColorClass}`;
-            // Update rates
-            const rateDivs = card.querySelectorAll('.grid > div > p:last-child');
-            rateDivs[0].textContent = rateObj.mastercard_rate.toFixed(4);
-            rateDivs[1].textContent = rateObj.market_rate.toFixed(4);
-            // Update difference
-            const diffSpan = card.querySelector('.pt-4 span:last-child');
-            diffSpan.className = `text-sm font-bold ${diffTextColor}`;
-            diffSpan.textContent = percentDiff;
-            // Update explanations
-            const explanationDivs = card.querySelectorAll('.mt-4, .mt-2');
-            explanationDivs[0].innerHTML = `${diff < 0 ? 'Mastercard rate is <span class="font-bold text-green-600">lower</span> than the market rate.' : 'Mastercard rate is <span class="font-bold ' + (isOpp ? 'text-gray-600' : 'text-danger') + '">higher</span> than the market rate.'}`;
-            explanationDivs[1].innerHTML = secondLine;
-            // Update classes for explanations
-            explanationDivs[0].className = `mt-4 text-xs ${isOpp ? 'text-gray-600' : 'text-danger'}`;
-            explanationDivs[1].className = `mt-2 text-xs ${isOpp ? 'text-gray-600' : 'text-danger'}`;
-        }
-
-        // トグルボタンの挙動
-        document.getElementById('toggle-invert').addEventListener('click', () => {
-            isInverted = !isInverted;
-            renderGrid();
-        });
-
+        // Load data on start
         loadRates();
     </script>
 </body>
