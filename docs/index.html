@@ -74,7 +74,6 @@
                 </p>
             </div>
             <div class="text-right sm:text-right text-left">
-                <p class="text-xs text-gray-400">Last updated</p>
                 <p id="update-time-relative" class="font-semibold text-gray-700">Loading...</p>
                 <p id="update-time" class="text-xs text-gray-500 mt-1" style="display:none;"></p>
             </div>
@@ -147,9 +146,9 @@
             const target = parts[1];
             
             if (isOpportunity) {
-                return `This is <span class="highlight-positive">a good time</span> to buy ${target} with ${base}.`;
+                return `This is <span class="font-bold text-green-600">a good time</span> to buy ${target} with ${base}.`;
             } else {
-                return `This is <span class="highlight-negative">not a good time</span> to buy ${target} with ${base}.`;
+                return `This is <span class="font-bold text-gray-700">not a good time</span> to buy ${target} with ${base}.`;
             }
         }
         
