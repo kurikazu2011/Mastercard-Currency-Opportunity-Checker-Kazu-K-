@@ -20,6 +20,16 @@
         .border-danger { border-color: #6b7280; }
         .text-danger { color: #6b7280; }
         .text-muted-gray { color: #9ca3af; }
+        
+        .highlight-positive {
+            font-weight: bold;
+            color: #16a34a;
+        }
+        
+        .highlight-negative {
+            font-weight: bold;
+            color: #374151;
+        }
 
         .tooltip-container { position: relative; display: inline-block; }
         .tooltip-box {
@@ -137,9 +147,9 @@
             const target = parts[1];
             
             if (isOpportunity) {
-                return `This is a good time to buy ${target} with ${base}.`;
+                return `This is <span class="highlight-positive">a good time</span> to buy ${target} with ${base}.`;
             } else {
-                return `This is not a good time to buy ${target} with ${base}.`;
+                return `This is <span class="highlight-negative">not a good time</span> to buy ${target} with ${base}.`;
             }
         }
         
