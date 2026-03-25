@@ -12,10 +12,14 @@
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f7f9fa; }
         .card { background-color: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.2s; }
         .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+        .card.no-opportunity { opacity: 0.92; }
         .text-wise-blue { color: #2e4369; }
         .text-wise-green { color: #00b9ff; }
         .bg-success { background-color: #16a34a; }
-        .bg-danger { background-color: #dc2626; }
+        .bg-danger { background-color: #6b7280; }
+        .border-danger { border-color: #6b7280; }
+        .text-danger { color: #6b7280; }
+        .text-muted-gray { color: #9ca3af; }
 
         .tooltip-container { position: relative; display: inline-block; }
         .tooltip-box {
@@ -61,7 +65,8 @@
             </div>
             <div class="text-right sm:text-right text-left">
                 <p class="text-xs text-gray-400">Last updated</p>
-                <p id="update-time" class="font-semibold text-gray-700">Loading...</p>
+                <p id="update-time-relative" class="font-semibold text-gray-700">Loading...</p>
+                <p id="update-time" class="text-xs text-gray-500 mt-1" style="display:none;"></p>
             </div>
         </header>
 
@@ -80,11 +85,63 @@
     <script>
         let rawData = [];
         let isInverted = false;
+        let fetchedAtDate = null;
 
 // 通貨ペアの表示順序を定義。先頭（USD/JPY）が左上になります。
         const basePairs = ["USD/JPY", "USD/EUR", "USD/CAD", "USD/MXN", "USD/GBP", "EUR/GBP"];
         // 入れ替えモード（Invert）の時の対応するペアの順序
         const invertedPairs = ["JPY/USD", "EUR/USD", "CAD/USD", "MXN/USD", "GBP/USD", "GBP/EUR"];
+        
+        // Generate relative time display
+        function getRelativeTime(fromDate) {
+            const now = new Date();
+            const diffMs = now.getTime() - fromDate.getTime();
+            const diffSec = Math.floor(diffMs / 1000);
+            const diffMin = Math.floor(diffSec / 60);
+            const diffHour = Math.floor(diffMin / 60);
+            
+            if (diffSec < 60) {
+                const unit = diffSec === 1 ? 'second' : 'seconds';
+                return `Updated ${diffSec} ${unit} ago`;
+            } else if (diffMin < 60) {
+                const unit = diffMin === 1 ? 'minute' : 'minutes';
+                return `Updated ${diffMin} ${unit} ago`;
+            } else if (diffHour < 24) {
+                const unit = diffHour === 1 ? 'hour' : 'hours';
+                return `Updated ${diffHour} ${unit} ago`;
+            } else {
+                const diffDay = Math.floor(diffHour / 24);
+                const unit = diffDay === 1 ? 'day' : 'days';
+                return `Updated ${diffDay} ${unit} ago`;
+            }
+        }
+        
+        // Update relative time display periodically
+        function updateRelativeTimeDisplay() {
+            if (fetchedAtDate) {
+                document.getElementById('update-time-relative').innerText = getRelativeTime(fetchedAtDate);
+            }
+        }
+        
+        // Format percentage difference
+        function formatPercentageDiff(mastercard_rate, market_rate) {
+            const percentDiff = ((mastercard_rate - market_rate) / market_rate) * 100;
+            const sign = percentDiff >= 0 ? '+' : '';
+            return sign + percentDiff.toFixed(2) + '%';
+        }
+        
+        // Generate second explanatory line based on pair and opportunity
+        function generateSecondLine(pair, isOpportunity) {
+            const parts = pair.split('/');
+            const base = parts[0];
+            const target = parts[1];
+            
+            if (isOpportunity) {
+                return `This is a good time to buy ${target} with ${base}.`;
+            } else {
+                return `This is not a good time to buy ${target} with ${base}.`;
+            }
+        }
         
 async function loadRates() {
             try {
@@ -95,9 +152,13 @@ async function loadRates() {
                 
                 // DB(JSON)に記録された正確なUTC時刻を、閲覧者のローカルタイムに変換
                 const utcDateStr = data.fetched_at_utc.replace(' ', 'T') + 'Z';
-                const localDate = new Date(utcDateStr);
+                fetchedAtDate = new Date(utcDateStr);
                 
-                document.getElementById('update-time').innerText = localDate.toLocaleString();
+                document.getElementById('update-time').innerText = fetchedAtDate.toLocaleString();
+                updateRelativeTimeDisplay();
+                
+                // Update relative time every second
+                setInterval(updateRelativeTimeDisplay, 1000);
 
                 rawData = data.rates;
                 renderGrid();
@@ -126,9 +187,16 @@ async function loadRates() {
                 const isOpp = rateObj.opportunity;
                 const oppColor = isOpp ? 'bg-success' : 'bg-danger';
                 const oppText = isOpp ? 'YES' : 'NO';
+                const borderColorClass = isOpp ? 'border-green-500' : 'border-danger';
+                const noOppClass = isOpp ? '' : 'no-opportunity';
+                
+                const percentDiff = formatPercentageDiff(rateObj.mastercard_rate, rateObj.market_rate);
+                const secondLine = generateSecondLine(rateObj.pair, isOpp);
+                
+                const diffTextColor = isOpp ? (diff < 0 ? 'text-green-600' : 'text-gray-600') : 'text-danger';
 
                 const cardHTML = `
-                    <div class="card p-6 flex flex-col justify-between h-full border-t-4 ${isOpp ? 'border-green-500' : 'border-red-500'}">
+                    <div class="card ${noOppClass} p-6 flex flex-col justify-between h-full border-t-4 ${borderColorClass}">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-2xl font-bold text-wise-blue tracking-tight">${rateObj.pair}</h3>
                             <span class="${oppColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
@@ -146,13 +214,16 @@ async function loadRates() {
                             </div>
                         </div>
                         <div class="pt-4 border-t border-gray-100 flex justify-between items-center">
-                            <span class="text-sm text-gray-500">Difference (Mastercard - Market):</span>
-                            <span class="text-sm font-bold ${diff < 0 ? 'text-green-600' : 'text-red-600'}">
-                                ${diff > 0 ? '+' : ''}${diff.toFixed(4)}
+                            <span class="text-sm ${isOpp ? 'text-gray-500' : 'text-muted-gray'}">Difference vs Market:</span>
+                            <span class="text-sm font-bold ${diffTextColor}">
+                                ${percentDiff}
                             </span>
                         </div>
-                        <div class="mt-4 text-xs text-gray-600">
-                            ${diff < 0 ? 'Mastercard rate is <span class="font-bold text-green-600">lower</span> than the market rate.' : 'Mastercard rate is <span class="font-bold text-red-600">higher</span> than the market rate.'}
+                        <div class="mt-4 text-xs ${isOpp ? 'text-gray-600' : 'text-muted-gray'}">
+                            ${diff < 0 ? 'Mastercard rate is <span class="font-bold text-green-600">lower</span> than the market rate.' : 'Mastercard rate is <span class="font-bold ' + (isOpp ? 'text-gray-600' : 'text-danger') + '">higher</span> than the market rate.'}
+                        </div>
+                        <div class="mt-2 text-xs ${isOpp ? 'text-gray-700 font-medium' : 'text-muted-gray'}">
+                            ${secondLine}
                         </div>
                     </div>
                 `;
