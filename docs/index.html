@@ -79,22 +79,22 @@
         
 async function loadRates() {
             try {
-                const response = await fetch('latest_rates.json');
+                // ファイル名の末尾にランダムな現在時刻（?t=...）をつけることで、ブラウザのキャッシュを強制的に無効化します
+                const response = await fetch('latest_rates.json?t=' + new Date().getTime());
                 if (!response.ok) throw new Error("Network response was not ok");
                 const data = await response.json();
                 
-                // Pythonから来た "YYYY-MM-DD HH:MM:SS" を "YYYY-MM-DDTHH:MM:SSZ" に整形してUTCとして認識させる
+                // DB(JSON)に記録された正確なUTC時刻を、閲覧者のローカルタイムに変換
                 const utcDateStr = data.fetched_at_utc.replace(' ', 'T') + 'Z';
                 const localDate = new Date(utcDateStr);
                 
-                // ブラウザのローカル時刻（閲覧者のタイムゾーン）で表示
                 document.getElementById('update-time').innerText = localDate.toLocaleString();
 
                 rawData = data.rates;
                 renderGrid();
             } catch (error) {
                 console.error("Failed to load rates:", error);
-                document.getElementById('rates-grid').innerHTML = '<p class="text-red-500">Failed to load data. Are you running a local server?</p>';
+                document.getElementById('rates-grid').innerHTML = '<p class="text-red-500">Failed to load data.</p>';
             }
         }
 
