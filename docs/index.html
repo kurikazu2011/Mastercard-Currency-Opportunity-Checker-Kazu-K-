@@ -289,8 +289,10 @@ async function loadRates() {
                 const cardHTML = `
                     <div class="card ${noOppClass} p-6 flex flex-col justify-between h-full border-t-4 ${borderColorClass}" draggable="true" data-pair="${rateObj.pair}" data-index="${index}">
                         <div class="flex justify-between items-start mb-4 relative">
-                            <div class="drag-handle">⋮⋮</div>
-                            <h3 class="text-2xl font-bold text-wise-blue tracking-tight">${rateObj.pair}</h3>
+                            <div class="card-header-left">
+                                <div class="drag-handle">⋮⋮</div>
+                                <h3 class="text-2xl font-bold text-wise-blue tracking-tight">${rateObj.pair}</h3>
+                            </div>
                             <span class="${oppColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
                                 Better Rate: ${oppText}
                             </span>
