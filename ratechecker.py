@@ -13,14 +13,14 @@ import yfinance as yf
 DB_PATH = Path("docs/fx_rates.db")
 JSON_OUT_PATH = Path("docs/latest_rates.json")
 
-# 監視対象の通貨ペア (Base/Target)
+# 監視対象の通貨ペア (Base, Target) - 全12方向の組み合わせ
 TARGET_PAIRS = [
-    ("USD", "EUR"),
-    ("USD", "CAD"),
-    ("USD", "MXN"),
-    ("USD", "JPY"),
-    ("USD", "GBP"),
-    ("EUR", "GBP")
+    ("USD", "EUR"), ("EUR", "USD"),
+    ("USD", "CAD"), ("CAD", "USD"),
+    ("USD", "MXN"), ("MXN", "USD"),
+    ("USD", "JPY"), ("JPY", "USD"),
+    ("USD", "GBP"), ("GBP", "USD"),
+    ("EUR", "GBP"), ("GBP", "EUR")
 ]
 
 # Mastercard API Base Settings
@@ -142,10 +142,10 @@ def main():
     }
     with open(JSON_OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(output_data, f, ensure_ascii=False, indent=2)
-    print(f"Saved latest data to {JSON_OUT_PATH}")
+        
+    print("-" * 40)
+    print(f"✅ DB (fx_rates.db) に {len(TARGET_PAIRS)}ペアのデータを保存しました。")
+    print(f"✅ JSON (latest_rates.json) を更新しました。")
 
 if __name__ == "__main__":
     main()
-
-
-    
