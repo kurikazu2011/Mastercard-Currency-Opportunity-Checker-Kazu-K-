@@ -1,24 +1,24 @@
 {
-  "fetched_at_utc": "2026-04-24 17:20:24",
+  "fetched_at_utc": "2026-04-24 17:40:21",
   "rates": [
     {
       "pair": "USD/EUR",
       "base": "USD",
       "target": "EUR",
       "mastercard_rate": 0.856237,
-      "market_rate": null,
-      "diff": null,
-      "opportunity": null,
-      "error": "Yahoo Finance returned no data for USDEUR=X"
+      "market_rate": 0.8535000085830688,
+      "diff": 0.002736991416931178,
+      "opportunity": false,
+      "error": null
     },
     {
       "pair": "EUR/USD",
       "base": "EUR",
       "target": "USD",
       "mastercard_rate": 1.1717999,
-      "market_rate": 1.172195553779602,
-      "diff": -0.0003956537796021564,
-      "opportunity": true,
+      "market_rate": 1.1716461181640625,
+      "diff": 0.00015378183593739436,
+      "opportunity": false,
       "error": null
     },
     {
@@ -26,8 +26,8 @@
       "base": "USD",
       "target": "CAD",
       "mastercard_rate": 1.3692,
-      "market_rate": 1.3668800592422485,
-      "diff": 0.0023199407577514375,
+      "market_rate": 1.3671000003814697,
+      "diff": 0.002099999618530246,
       "opportunity": false,
       "error": null
     },
@@ -36,8 +36,8 @@
       "base": "CAD",
       "target": "USD",
       "mastercard_rate": 0.7324398,
-      "market_rate": 0.7315877676010132,
-      "diff": 0.0008520323989867906,
+      "market_rate": 0.7314914464950562,
+      "diff": 0.0009483535049438219,
       "opportunity": false,
       "error": null
     },
@@ -46,8 +46,8 @@
       "base": "USD",
       "target": "MXN",
       "mastercard_rate": 17.3287,
-      "market_rate": 17.396039962768555,
-      "diff": -0.06733996276855336,
+      "market_rate": 17.407899856567383,
+      "diff": -0.07919985656738149,
       "opportunity": true,
       "error": null
     },
@@ -56,8 +56,8 @@
       "base": "MXN",
       "target": "USD",
       "mastercard_rate": 0.0577227,
-      "market_rate": 0.05748434737324715,
-      "diff": 0.00023835262675285518,
+      "market_rate": 0.057445183396339417,
+      "diff": 0.0002775166036605853,
       "opportunity": false,
       "error": null
     },
@@ -66,8 +66,8 @@
       "base": "USD",
       "target": "JPY",
       "mastercard_rate": 159.8,
-      "market_rate": 159.36000061035156,
-      "diff": 0.43999938964844887,
+      "market_rate": 159.42999267578125,
+      "diff": 0.37000732421876137,
       "opportunity": false,
       "error": null
     },
@@ -76,8 +76,8 @@
       "base": "JPY",
       "target": "USD",
       "mastercard_rate": 0.0062783,
-      "market_rate": 0.006275100167840719,
-      "diff": 3.1998321592804566e-06,
+      "market_rate": 0.0062726205214858055,
+      "diff": 5.679478514194168e-06,
       "opportunity": false,
       "error": null
     },
@@ -86,8 +86,8 @@
       "base": "USD",
       "target": "GBP",
       "mastercard_rate": 0.742059,
-      "market_rate": 0.739512026309967,
-      "diff": 0.002546973690032983,
+      "market_rate": 0.7397090196609497,
+      "diff": 0.002349980339050317,
       "opportunity": false,
       "error": null
     },
@@ -96,9 +96,9 @@
       "base": "GBP",
       "target": "USD",
       "mastercard_rate": 1.3521992,
-      "market_rate": 1.3522430658340454,
-      "diff": -4.3865834045364593e-05,
-      "opportunity": true,
+      "market_rate": 1.3518829345703125,
+      "diff": 0.00031626542968754556,
+      "opportunity": false,
       "error": null
     },
     {
@@ -106,8 +106,8 @@
       "base": "EUR",
       "target": "GBP",
       "mastercard_rate": 0.8682,
-      "market_rate": 0.8665900230407715,
-      "diff": 0.0016099769592284874,
+      "market_rate": 0.8664100170135498,
+      "diff": 0.001789982986450167,
       "opportunity": false,
       "error": null
     },
@@ -116,8 +116,8 @@
       "base": "GBP",
       "target": "EUR",
       "mastercard_rate": 1.1558021,
-      "market_rate": 1.1538410186767578,
-      "diff": 0.001961081323242242,
+      "market_rate": 1.1542309522628784,
+      "diff": 0.0015711477371216365,
       "opportunity": false,
       "error": null
     }
