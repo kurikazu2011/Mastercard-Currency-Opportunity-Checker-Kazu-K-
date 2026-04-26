@@ -1,13 +1,13 @@
 {
-  "fetched_at_utc": "2026-04-26 22:40:21",
+  "fetched_at_utc": "2026-04-26 23:00:30",
   "rates": [
     {
       "pair": "USD/EUR",
       "base": "USD",
       "target": "EUR",
       "mastercard_rate": 0.857044,
-      "market_rate": 0.8528000116348267,
-      "diff": 0.004243988365173368,
+      "market_rate": 0.8539000153541565,
+      "diff": 0.003143984645843534,
       "opportunity": false,
       "error": null
     },
@@ -16,9 +16,9 @@
       "base": "EUR",
       "target": "USD",
       "mastercard_rate": 1.1720993,
-      "market_rate": 1.1726078987121582,
-      "diff": -0.000508598712158248,
-      "opportunity": true,
+      "market_rate": 1.1710972785949707,
+      "diff": 0.001002021405029252,
+      "opportunity": false,
       "error": null
     },
     {
@@ -26,8 +26,8 @@
       "base": "USD",
       "target": "CAD",
       "mastercard_rate": 1.3717,
-      "market_rate": 1.3667999505996704,
-      "diff": 0.004900049400329509,
+      "market_rate": 1.367709994316101,
+      "diff": 0.003990005683898845,
       "opportunity": false,
       "error": null
     },
@@ -36,9 +36,9 @@
       "base": "CAD",
       "target": "USD",
       "mastercard_rate": 0.7313684,
-      "market_rate": 0.7316359877586365,
-      "diff": -0.000267587758636445,
-      "opportunity": true,
+      "market_rate": 0.7311491370201111,
+      "diff": 0.0002192629798889456,
+      "opportunity": false,
       "error": null
     },
     {
@@ -46,8 +46,8 @@
       "base": "USD",
       "target": "MXN",
       "mastercard_rate": 17.4052,
-      "market_rate": 17.39349937438965,
-      "diff": 0.011700625610352233,
+      "market_rate": 17.398000717163086,
+      "diff": 0.007199282836914733,
       "opportunity": false,
       "error": null
     },
@@ -56,8 +56,8 @@
       "base": "MXN",
       "target": "USD",
       "mastercard_rate": 0.0576203,
-      "market_rate": 0.05749274417757988,
-      "diff": 0.00012755582242011954,
+      "market_rate": 0.05747786909341812,
+      "diff": 0.00014243090658187796,
       "opportunity": false,
       "error": null
     },
@@ -66,8 +66,8 @@
       "base": "USD",
       "target": "JPY",
       "mastercard_rate": 159.87,
-      "market_rate": 159.33299255371094,
-      "diff": 0.537007446289067,
+      "market_rate": 159.54400634765625,
+      "diff": 0.32599365234375455,
       "opportunity": false,
       "error": null
     },
@@ -76,8 +76,8 @@
       "base": "JPY",
       "target": "USD",
       "mastercard_rate": 0.0062771,
-      "market_rate": 0.006276164203882217,
-      "diff": 9.3579611778246e-07,
+      "market_rate": 0.00626786332577467,
+      "diff": 9.23667422533022e-06,
       "opportunity": false,
       "error": null
     },
@@ -86,8 +86,8 @@
       "base": "USD",
       "target": "GBP",
       "mastercard_rate": 0.743826,
-      "market_rate": 0.7389929890632629,
-      "diff": 0.004833010936737048,
+      "market_rate": 0.7398999929428101,
+      "diff": 0.003926007057189929,
       "opportunity": false,
       "error": null
     },
@@ -96,9 +96,9 @@
       "base": "GBP",
       "target": "USD",
       "mastercard_rate": 1.3522998,
-      "market_rate": 1.3531928062438965,
-      "diff": -0.0008930062438965436,
-      "opportunity": true,
+      "market_rate": 1.3515340089797974,
+      "diff": 0.0007657910202025775,
+      "opportunity": false,
       "error": null
     },
     {
@@ -106,8 +106,8 @@
       "base": "EUR",
       "target": "GBP",
       "mastercard_rate": 0.8685,
-      "market_rate": 0.8659600019454956,
-      "diff": 0.0025399980545044443,
+      "market_rate": 0.8662400245666504,
+      "diff": 0.002259975433349659,
       "opportunity": false,
       "error": null
     },
@@ -116,10 +116,10 @@
       "base": "GBP",
       "target": "EUR",
       "mastercard_rate": 1.1540681,
-      "market_rate": 1.154744029045105,
-      "diff": -0.0006759290451050504,
-      "opportunity": true,
-      "error": null
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Yahoo Finance returned no data for GBPEUR=X"
     }
   ]
 }
