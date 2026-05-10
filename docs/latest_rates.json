@@ -1,13 +1,13 @@
 {
-  "fetched_at_utc": "2026-05-10 22:40:22",
+  "fetched_at_utc": "2026-05-10 23:00:25",
   "rates": [
     {
       "pair": "USD/EUR",
       "base": "USD",
       "target": "EUR",
       "mastercard_rate": 0.853242,
-      "market_rate": 0.8482000231742859,
-      "diff": 0.005041976825714056,
+      "market_rate": 0.8497999906539917,
+      "diff": 0.0034420093460082457,
       "opportunity": false,
       "error": null
     },
@@ -16,9 +16,9 @@
       "base": "EUR",
       "target": "USD",
       "mastercard_rate": 1.1787991,
-      "market_rate": 1.1789672374725342,
-      "diff": -0.0001681374725341911,
-      "opportunity": true,
+      "market_rate": 1.176747441291809,
+      "diff": 0.0020516587081909066,
+      "opportunity": false,
       "error": null
     },
     {
@@ -26,8 +26,8 @@
       "base": "USD",
       "target": "CAD",
       "mastercard_rate": 1.3712,
-      "market_rate": 1.3671000003814697,
-      "diff": 0.004099999618530248,
+      "market_rate": 1.3688499927520752,
+      "diff": 0.002350007247924779,
       "opportunity": false,
       "error": null
     },
@@ -36,8 +36,8 @@
       "base": "CAD",
       "target": "USD",
       "mastercard_rate": 0.733945,
-      "market_rate": 0.7314754128456116,
-      "diff": 0.0024695871543883863,
+      "market_rate": 0.7305402159690857,
+      "diff": 0.003404784030914265,
       "opportunity": false,
       "error": null
     },
@@ -46,9 +46,9 @@
       "base": "USD",
       "target": "MXN",
       "mastercard_rate": 17.2105,
-      "market_rate": 17.15999984741211,
-      "diff": 0.05050015258789031,
-      "opportunity": false,
+      "market_rate": 17.213499069213867,
+      "diff": -0.0029990692138675,
+      "opportunity": true,
       "error": null
     },
     {
@@ -56,9 +56,9 @@
       "base": "MXN",
       "target": "USD",
       "mastercard_rate": 0.0581608,
-      "market_rate": 0.05827505886554718,
-      "diff": -0.00011425886554718157,
-      "opportunity": true,
+      "market_rate": 0.05809394270181656,
+      "diff": 6.685729818343977e-05,
+      "opportunity": false,
       "error": null
     },
     {
@@ -66,8 +66,8 @@
       "base": "USD",
       "target": "JPY",
       "mastercard_rate": 157.01,
-      "market_rate": 156.62100219726562,
-      "diff": 0.3889978027343659,
+      "market_rate": 156.88800048828125,
+      "diff": 0.1219995117187409,
       "opportunity": false,
       "error": null
     },
@@ -76,8 +76,8 @@
       "base": "JPY",
       "target": "USD",
       "mastercard_rate": 0.006393,
-      "market_rate": 0.00638483976945281,
-      "diff": 8.160230547189957e-06,
+      "market_rate": 0.006374136079102755,
+      "diff": 1.8863920897245652e-05,
       "opportunity": false,
       "error": null
     },
@@ -86,8 +86,8 @@
       "base": "USD",
       "target": "GBP",
       "mastercard_rate": 0.738497,
-      "market_rate": 0.7335500121116638,
-      "diff": 0.004946987888336141,
+      "market_rate": 0.7358199954032898,
+      "diff": 0.002677004596710164,
       "opportunity": false,
       "error": null
     },
@@ -96,8 +96,8 @@
       "base": "GBP",
       "target": "USD",
       "mastercard_rate": 1.363399,
-      "market_rate": 1.3632335662841797,
-      "diff": 0.00016543371582034005,
+      "market_rate": 1.3590279817581177,
+      "diff": 0.004371018241882352,
       "opportunity": false,
       "error": null
     },
@@ -106,8 +106,8 @@
       "base": "EUR",
       "target": "GBP",
       "mastercard_rate": 0.8659,
-      "market_rate": 0.8646000027656555,
-      "diff": 0.0012999972343444854,
+      "market_rate": 0.8656200170516968,
+      "diff": 0.0002799829483032257,
       "opportunity": false,
       "error": null
     },
@@ -116,10 +116,10 @@
       "base": "GBP",
       "target": "EUR",
       "mastercard_rate": 1.1579435,
-      "market_rate": 1.1561000347137451,
-      "diff": 0.0018434652862548973,
-      "opportunity": false,
-      "error": null
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Yahoo Finance returned no data for GBPEUR=X"
     }
   ]
 }
