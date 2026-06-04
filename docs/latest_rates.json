@@ -1,33 +1,33 @@
 {
-  "fetched_at_utc": "2026-06-04 22:40:22",
+  "fetched_at_utc": "2026-06-04 23:00:26",
   "rates": [
     {
       "pair": "USD/EUR",
       "base": "USD",
       "target": "EUR",
       "mastercard_rate": 0.862663,
-      "market_rate": 0.8608999848365784,
-      "diff": 0.0017630151634215885,
-      "opportunity": false,
-      "error": null
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Yahoo Finance returned no data for USDEUR=X"
     },
     {
       "pair": "EUR/USD",
       "base": "EUR",
       "target": "USD",
       "mastercard_rate": 1.1645999,
-      "market_rate": 1.1615750789642334,
-      "diff": 0.0030248210357666228,
-      "opportunity": false,
-      "error": null
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Yahoo Finance returned no data for EURUSD=X"
     },
     {
       "pair": "USD/CAD",
       "base": "USD",
       "target": "CAD",
       "mastercard_rate": 1.3928,
-      "market_rate": 1.3906500339508057,
-      "diff": 0.002149966049194374,
+      "market_rate": 1.3907400369644165,
+      "diff": 0.002059963035583534,
       "opportunity": false,
       "error": null
     },
@@ -36,8 +36,8 @@
       "base": "CAD",
       "target": "USD",
       "mastercard_rate": 0.7205649,
-      "market_rate": 0.7190881967544556,
-      "diff": 0.0014767032455443863,
+      "market_rate": 0.719041645526886,
+      "diff": 0.0015232544731139663,
       "opportunity": false,
       "error": null
     },
@@ -46,8 +46,8 @@
       "base": "USD",
       "target": "MXN",
       "mastercard_rate": 17.3328,
-      "market_rate": 17.277050018310547,
-      "diff": 0.055749981689452,
+      "market_rate": 17.273000717163086,
+      "diff": 0.05979928283691294,
       "opportunity": false,
       "error": null
     },
@@ -56,8 +56,8 @@
       "base": "MXN",
       "target": "USD",
       "mastercard_rate": 0.0579056,
-      "market_rate": 0.057880252599716187,
-      "diff": 2.534740028381499e-05,
+      "market_rate": 0.057893820106983185,
+      "diff": 1.17798930168167e-05,
       "opportunity": false,
       "error": null
     },
@@ -66,8 +66,8 @@
       "base": "USD",
       "target": "JPY",
       "mastercard_rate": 160.2,
-      "market_rate": 159.98599243164062,
-      "diff": 0.21400756835936363,
+      "market_rate": 159.9969940185547,
+      "diff": 0.20300598144530113,
       "opportunity": false,
       "error": null
     },
@@ -76,8 +76,8 @@
       "base": "JPY",
       "target": "USD",
       "mastercard_rate": 0.0062617,
-      "market_rate": 0.006250547245144844,
-      "diff": 1.1152754855156197e-05,
+      "market_rate": 0.006250117439776659,
+      "diff": 1.158256022334124e-05,
       "opportunity": false,
       "error": null
     },
@@ -86,28 +86,28 @@
       "base": "USD",
       "target": "GBP",
       "mastercard_rate": 0.745823,
-      "market_rate": 0.7448999881744385,
-      "diff": 0.0009230118255615372,
-      "opportunity": false,
-      "error": null
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Yahoo Finance returned no data for USDGBP=X"
     },
     {
       "pair": "GBP/USD",
       "base": "GBP",
       "target": "USD",
       "mastercard_rate": 1.3465982,
-      "market_rate": 1.3424620628356934,
-      "diff": 0.004136137164306719,
-      "opportunity": false,
-      "error": null
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Yahoo Finance returned no data for GBPUSD=X"
     },
     {
       "pair": "EUR/GBP",
       "base": "EUR",
       "target": "GBP",
       "mastercard_rate": 0.8659,
-      "market_rate": 0.8649600148200989,
-      "diff": 0.0009399851799011261,
+      "market_rate": 0.8650000095367432,
+      "diff": 0.000899990463256839,
       "opportunity": false,
       "error": null
     },
@@ -116,10 +116,10 @@
       "base": "GBP",
       "target": "EUR",
       "mastercard_rate": 1.1580776,
-      "market_rate": 1.155500054359436,
-      "diff": 0.002577545640563894,
-      "opportunity": false,
-      "error": null
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Yahoo Finance returned no data for GBPEUR=X"
     }
   ]
 }
