@@ -1,15 +1,15 @@
 {
-  "fetched_at_utc": "2026-06-07 06:00:23",
+  "fetched_at_utc": "2026-06-07 06:20:24",
   "rates": [
     {
       "pair": "USD/EUR",
       "base": "USD",
       "target": "EUR",
       "mastercard_rate": 0.867227,
-      "market_rate": null,
-      "diff": null,
-      "opportunity": null,
-      "error": "Yahoo Finance returned no data for USDEUR=X"
+      "market_rate": 0.8675000071525574,
+      "diff": -0.00027300715255740293,
+      "opportunity": true,
+      "error": null
     },
     {
       "pair": "EUR/USD",
