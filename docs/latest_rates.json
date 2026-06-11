@@ -1,125 +1,125 @@
 {
-  "fetched_at_utc": "2026-06-11 08:20:26",
+  "fetched_at_utc": "2026-06-11 08:40:28",
   "rates": [
     {
       "pair": "USD/EUR",
       "base": "USD",
       "target": "EUR",
-      "mastercard_rate": 0.867528,
-      "market_rate": 0.8662999868392944,
-      "diff": 0.0012280131607055322,
-      "opportunity": false,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Expecting value: line 1 column 1 (char 0)"
     },
     {
       "pair": "EUR/USD",
       "base": "EUR",
       "target": "USD",
-      "mastercard_rate": 1.1573994,
-      "market_rate": 1.154334545135498,
-      "diff": 0.0030648548645020313,
-      "opportunity": false,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Expecting value: line 1 column 1 (char 0)"
     },
     {
       "pair": "USD/CAD",
       "base": "USD",
       "target": "CAD",
-      "mastercard_rate": 1.3972,
-      "market_rate": 1.396649956703186,
-      "diff": 0.0005500432968139624,
-      "opportunity": false,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Expecting value: line 1 column 1 (char 0)"
     },
     {
       "pair": "CAD/USD",
       "base": "CAD",
       "target": "USD",
-      "mastercard_rate": 0.7195798,
-      "market_rate": 0.7159785032272339,
-      "diff": 0.003601296772766105,
-      "opportunity": false,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Expecting value: line 1 column 1 (char 0)"
     },
     {
       "pair": "USD/MXN",
       "base": "USD",
       "target": "MXN",
-      "mastercard_rate": 17.4312,
-      "market_rate": 17.396099090576172,
-      "diff": 0.0351009094238286,
-      "opportunity": false,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Expecting value: line 1 column 1 (char 0)"
     },
     {
       "pair": "MXN/USD",
       "base": "MXN",
       "target": "USD",
-      "mastercard_rate": 0.0575506,
-      "market_rate": 0.05748414993286133,
-      "diff": 6.645006713867224e-05,
-      "opportunity": false,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Expecting value: line 1 column 1 (char 0)"
     },
     {
       "pair": "USD/JPY",
       "base": "USD",
       "target": "JPY",
-      "mastercard_rate": 160.55,
-      "market_rate": 160.5030059814453,
-      "diff": 0.04699401855469887,
-      "opportunity": false,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Expecting value: line 1 column 1 (char 0)"
     },
     {
       "pair": "JPY/USD",
       "base": "JPY",
       "target": "USD",
-      "mastercard_rate": 0.0062422,
-      "market_rate": 0.006230297032743692,
-      "diff": 1.1902967256307434e-05,
-      "opportunity": false,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Mastercard API failed: 404"
     },
     {
       "pair": "USD/GBP",
       "base": "USD",
       "target": "GBP",
-      "mastercard_rate": 0.748783,
-      "market_rate": 0.7476199865341187,
-      "diff": 0.001163013465881324,
-      "opportunity": false,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Expecting value: line 1 column 1 (char 0)"
     },
     {
       "pair": "GBP/USD",
       "base": "GBP",
       "target": "USD",
-      "mastercard_rate": 1.3426982,
-      "market_rate": 1.3375779390335083,
-      "diff": 0.005120260966491763,
-      "opportunity": false,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Expecting value: line 1 column 1 (char 0)"
     },
     {
       "pair": "EUR/GBP",
       "base": "EUR",
       "target": "GBP",
-      "mastercard_rate": 0.8638,
-      "market_rate": 0.8627700209617615,
-      "diff": 0.0010299790382385376,
-      "opportunity": false,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Expecting value: line 1 column 1 (char 0)"
     },
     {
       "pair": "GBP/EUR",
       "base": "GBP",
       "target": "EUR",
-      "mastercard_rate": 1.160362,
-      "market_rate": 1.1584999561309814,
-      "diff": 0.0018620438690184482,
-      "opportunity": false,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Expecting value: line 1 column 1 (char 0)"
     }
   ]
 }
