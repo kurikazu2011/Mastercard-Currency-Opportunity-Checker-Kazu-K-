@@ -1,5 +1,5 @@
 {
-  "fetched_at_utc": "2026-06-16 22:20:23",
+  "fetched_at_utc": "2026-06-16 22:40:22",
   "rates": [
     {
       "pair": "USD/EUR",
@@ -46,9 +46,9 @@
       "base": "USD",
       "target": "MXN",
       "mastercard_rate": 17.2008,
-      "market_rate": 17.20199966430664,
-      "diff": -0.0011996643066396473,
-      "opportunity": true,
+      "market_rate": 17.195999145507812,
+      "diff": 0.004800854492188478,
+      "opportunity": false,
       "error": null
     },
     {
@@ -56,8 +56,8 @@
       "base": "MXN",
       "target": "USD",
       "mastercard_rate": 0.058193,
-      "market_rate": 0.058132775127887726,
-      "diff": 6.022487211227584e-05,
+      "market_rate": 0.05815306305885315,
+      "diff": 3.9936941146852256e-05,
       "opportunity": false,
       "error": null
     },
@@ -86,8 +86,8 @@
       "base": "USD",
       "target": "GBP",
       "mastercard_rate": 0.746993,
-      "market_rate": 0.7447100281715393,
-      "diff": 0.0022829718284607114,
+      "market_rate": 0.7447400093078613,
+      "diff": 0.00225299069213869,
       "opportunity": false,
       "error": null
     },
@@ -96,8 +96,8 @@
       "base": "GBP",
       "target": "USD",
       "mastercard_rate": 1.3445993,
-      "market_rate": 1.3428045511245728,
-      "diff": 0.0017947488754272989,
+      "market_rate": 1.3427504301071167,
+      "diff": 0.0018488698928833536,
       "opportunity": false,
       "error": null
     },
@@ -106,8 +106,8 @@
       "base": "EUR",
       "target": "GBP",
       "mastercard_rate": 0.8654,
-      "market_rate": 0.864579975605011,
-      "diff": 0.0008200243949889607,
+      "market_rate": 0.8647099733352661,
+      "diff": 0.0006900266647338338,
       "opportunity": false,
       "error": null
     },
@@ -116,8 +116,8 @@
       "base": "GBP",
       "target": "EUR",
       "mastercard_rate": 1.1584801,
-      "market_rate": 1.156000018119812,
-      "diff": 0.002480081880188001,
+      "market_rate": 1.1557999849319458,
+      "diff": 0.002680115068054212,
       "opportunity": false,
       "error": null
     }
