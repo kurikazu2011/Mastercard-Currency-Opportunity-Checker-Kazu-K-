@@ -1,125 +1,125 @@
 {
-  "fetched_at_utc": "2026-06-26 07:40:20",
+  "fetched_at_utc": "2026-06-26 08:00:24",
   "rates": [
     {
       "pair": "USD/EUR",
       "base": "USD",
       "target": "EUR",
-      "mastercard_rate": null,
-      "market_rate": null,
-      "diff": null,
-      "opportunity": null,
-      "error": "Mastercard API failed: 404"
+      "mastercard_rate": 0.882378,
+      "market_rate": 0.8779000043869019,
+      "diff": 0.00447799561309814,
+      "opportunity": false,
+      "error": null
     },
     {
       "pair": "EUR/USD",
       "base": "EUR",
       "target": "USD",
-      "mastercard_rate": null,
-      "market_rate": null,
-      "diff": null,
-      "opportunity": null,
-      "error": "Mastercard API failed: 404"
+      "mastercard_rate": 1.138899,
+      "market_rate": 1.1390818357467651,
+      "diff": -0.000182835746765031,
+      "opportunity": true,
+      "error": null
     },
     {
       "pair": "USD/CAD",
       "base": "USD",
       "target": "CAD",
-      "mastercard_rate": null,
-      "market_rate": null,
-      "diff": null,
-      "opportunity": null,
-      "error": "Mastercard API failed: 404"
+      "mastercard_rate": 1.4251,
+      "market_rate": 1.419469952583313,
+      "diff": 0.005630047416687045,
+      "opportunity": false,
+      "error": null
     },
     {
       "pair": "CAD/USD",
       "base": "CAD",
       "target": "USD",
-      "mastercard_rate": null,
-      "market_rate": null,
-      "diff": null,
-      "opportunity": null,
-      "error": "Mastercard API failed: 404"
+      "mastercard_rate": 0.7047713,
+      "market_rate": 0.704458475112915,
+      "diff": 0.0003128248870849504,
+      "opportunity": false,
+      "error": null
     },
     {
       "pair": "USD/MXN",
       "base": "USD",
       "target": "MXN",
-      "mastercard_rate": null,
-      "market_rate": null,
-      "diff": null,
-      "opportunity": null,
-      "error": "Mastercard API failed: 404"
+      "mastercard_rate": 17.6213,
+      "market_rate": 17.547199249267578,
+      "diff": 0.07410075073242339,
+      "opportunity": false,
+      "error": null
     },
     {
       "pair": "MXN/USD",
       "base": "MXN",
       "target": "USD",
-      "mastercard_rate": null,
-      "market_rate": null,
-      "diff": null,
-      "opportunity": null,
-      "error": "Mastercard API failed: 404"
+      "mastercard_rate": 0.0570295,
+      "market_rate": 0.0569891519844532,
+      "diff": 4.034801554679557e-05,
+      "opportunity": false,
+      "error": null
     },
     {
       "pair": "USD/JPY",
       "base": "USD",
       "target": "JPY",
-      "mastercard_rate": null,
-      "market_rate": null,
-      "diff": null,
-      "opportunity": null,
-      "error": "Mastercard API failed: 404"
+      "mastercard_rate": 161.97,
+      "market_rate": 161.6060028076172,
+      "diff": 0.36399719238281136,
+      "opportunity": false,
+      "error": null
     },
     {
       "pair": "JPY/USD",
       "base": "JPY",
       "target": "USD",
-      "mastercard_rate": null,
-      "market_rate": null,
-      "diff": null,
-      "opportunity": null,
-      "error": "Mastercard API failed: 404"
+      "mastercard_rate": 0.0061904,
+      "market_rate": 0.006187888793647289,
+      "diff": 2.51120635271114e-06,
+      "opportunity": false,
+      "error": null
     },
     {
       "pair": "USD/GBP",
       "base": "USD",
       "target": "GBP",
-      "mastercard_rate": null,
-      "market_rate": null,
-      "diff": null,
-      "opportunity": null,
-      "error": "Mastercard API failed: 404"
+      "mastercard_rate": 0.760745,
+      "market_rate": 0.7572500109672546,
+      "diff": 0.003494989032745366,
+      "opportunity": false,
+      "error": null
     },
     {
       "pair": "GBP/USD",
       "base": "GBP",
       "target": "USD",
-      "mastercard_rate": null,
-      "market_rate": null,
-      "diff": null,
-      "opportunity": null,
-      "error": "Mastercard API failed: 404"
+      "mastercard_rate": 1.3222983,
+      "market_rate": 1.3205678462982178,
+      "diff": 0.001730453701782153,
+      "opportunity": false,
+      "error": null
     },
     {
       "pair": "EUR/GBP",
       "base": "EUR",
       "target": "GBP",
-      "mastercard_rate": null,
-      "market_rate": null,
-      "diff": null,
-      "opportunity": null,
-      "error": "Mastercard API failed: 404"
+      "mastercard_rate": 0.8632,
+      "market_rate": 0.8622199892997742,
+      "diff": 0.0009800107002257974,
+      "opportunity": false,
+      "error": null
     },
     {
       "pair": "GBP/EUR",
       "base": "GBP",
       "target": "EUR",
-      "mastercard_rate": null,
-      "market_rate": null,
-      "diff": null,
-      "opportunity": null,
-      "error": "Mastercard API failed: 404"
+      "mastercard_rate": 1.1615751,
+      "market_rate": 1.1591999530792236,
+      "diff": 0.0023751469207764497,
+      "opportunity": false,
+      "error": null
     }
   ]
 }
