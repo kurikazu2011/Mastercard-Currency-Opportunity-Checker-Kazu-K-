@@ -1,5 +1,5 @@
 {
-  "fetched_at_utc": "2026-07-13 23:00:36",
+  "fetched_at_utc": "2026-07-13 23:20:27",
   "rates": [
     {
       "pair": "USD/EUR",
@@ -26,8 +26,8 @@
       "base": "USD",
       "target": "CAD",
       "mastercard_rate": 1.4178,
-      "market_rate": 1.4149999618530273,
-      "diff": 0.0028000381469726054,
+      "market_rate": 1.4148000478744507,
+      "diff": 0.0029999521255492656,
       "opportunity": false,
       "error": null
     },
@@ -46,8 +46,8 @@
       "base": "USD",
       "target": "MXN",
       "mastercard_rate": 17.4842,
-      "market_rate": 17.519500732421875,
-      "diff": -0.035300732421873704,
+      "market_rate": 17.51799964904785,
+      "diff": -0.033799649047850266,
       "opportunity": true,
       "error": null
     },
@@ -56,8 +56,8 @@
       "base": "MXN",
       "target": "USD",
       "mastercard_rate": 0.0572397,
-      "market_rate": 0.0570792518556118,
-      "diff": 0.00016044814438819638,
+      "market_rate": 0.05708414316177368,
+      "diff": 0.00015555683822631589,
       "opportunity": false,
       "error": null
     },
@@ -66,8 +66,8 @@
       "base": "USD",
       "target": "JPY",
       "mastercard_rate": 162.43,
-      "market_rate": 162.43600463867188,
-      "diff": -0.006004638671868179,
+      "market_rate": 162.4320068359375,
+      "diff": -0.002006835937493179,
       "opportunity": true,
       "error": null
     },
@@ -76,8 +76,8 @@
       "base": "JPY",
       "target": "USD",
       "mastercard_rate": 0.00619,
-      "market_rate": 0.006155777722597122,
-      "diff": 3.4222277402878e-05,
+      "market_rate": 0.006156422197818756,
+      "diff": 3.3577802181244086e-05,
       "opportunity": false,
       "error": null
     },
@@ -116,10 +116,10 @@
       "base": "GBP",
       "target": "EUR",
       "mastercard_rate": 1.174812,
-      "market_rate": null,
-      "diff": null,
-      "opportunity": null,
-      "error": "Yahoo Finance returned no data for GBPEUR=X"
+      "market_rate": 1.1723999977111816,
+      "diff": 0.002412002288818327,
+      "opportunity": false,
+      "error": null
     }
   ]
 }
