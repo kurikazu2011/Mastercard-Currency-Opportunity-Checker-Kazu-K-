@@ -1,13 +1,13 @@
 {
-  "fetched_at_utc": "2026-09-02 00:40:20",
+  "fetched_at_utc": "2026-09-02 01:00:30",
   "rates": [
     {
       "pair": "USD/EUR",
       "base": "USD",
       "target": "EUR",
       "mastercard_rate": 0.86408,
-      "market_rate": 0.8628000020980835,
-      "diff": 0.0012799979019164631,
+      "market_rate": 0.8629999756813049,
+      "diff": 0.0010800243186950276,
       "opportunity": false,
       "error": null
     },
@@ -16,8 +16,8 @@
       "base": "EUR",
       "target": "USD",
       "mastercard_rate": 1.1621988,
-      "market_rate": 1.1590172052383423,
-      "diff": 0.003181594761657802,
+      "market_rate": 1.1587486267089844,
+      "diff": 0.0034501732910157124,
       "opportunity": false,
       "error": null
     },
@@ -26,8 +26,8 @@
       "base": "USD",
       "target": "CAD",
       "mastercard_rate": 1.3918,
-      "market_rate": 1.3895100355148315,
-      "diff": 0.002289964485168383,
+      "market_rate": 1.3898999691009521,
+      "diff": 0.0019000308990477777,
       "opportunity": false,
       "error": null
     },
@@ -36,8 +36,8 @@
       "base": "CAD",
       "target": "USD",
       "mastercard_rate": 0.7218132,
-      "market_rate": 0.7196781635284424,
-      "diff": 0.002135036471557661,
+      "market_rate": 0.7194865942001343,
+      "diff": 0.0023266057998657663,
       "opportunity": false,
       "error": null
     },
@@ -46,8 +46,8 @@
       "base": "USD",
       "target": "MXN",
       "mastercard_rate": 17.0427,
-      "market_rate": 16.998199462890625,
-      "diff": 0.04450053710937496,
+      "market_rate": 17.004199981689453,
+      "diff": 0.038500018310546835,
       "opportunity": false,
       "error": null
     },
@@ -55,9 +55,9 @@
       "pair": "MXN/USD",
       "base": "MXN",
       "target": "USD",
-      "mastercard_rate": 0.0590228,
-      "market_rate": 0.058829762041568756,
-      "diff": 0.00019303795843124416,
+      "mastercard_rate": 0.0588142,
+      "market_rate": 0.05880900099873543,
+      "diff": 5.199001264569181e-06,
       "opportunity": false,
       "error": null
     },
@@ -66,9 +66,9 @@
       "base": "USD",
       "target": "JPY",
       "mastercard_rate": 160.27,
-      "market_rate": 160.22500610351562,
-      "diff": 0.04499389648438523,
-      "opportunity": false,
+      "market_rate": 160.2779998779297,
+      "diff": -0.007999877929677268,
+      "opportunity": true,
       "error": null
     },
     {
@@ -76,8 +76,8 @@
       "base": "JPY",
       "target": "USD",
       "mastercard_rate": 0.0062716,
-      "market_rate": 0.006241106428205967,
-      "diff": 3.049357179403262e-05,
+      "market_rate": 0.006239159498363733,
+      "diff": 3.244050163626628e-05,
       "opportunity": false,
       "error": null
     },
@@ -85,9 +85,9 @@
       "pair": "USD/GBP",
       "base": "USD",
       "target": "GBP",
-      "mastercard_rate": 0.739644,
-      "market_rate": 0.7401300072669983,
-      "diff": -0.00048600726699832286,
+      "mastercard_rate": 0.739809,
+      "market_rate": 0.7403200268745422,
+      "diff": -0.0005110268745421864,
       "opportunity": true,
       "error": null
     },
@@ -96,8 +96,8 @@
       "base": "GBP",
       "target": "USD",
       "mastercard_rate": 1.3567987,
-      "market_rate": 1.35111403465271,
-      "diff": 0.005684665347289952,
+      "market_rate": 1.3507671356201172,
+      "diff": 0.006031564379882726,
       "opportunity": false,
       "error": null
     },
@@ -106,8 +106,8 @@
       "base": "EUR",
       "target": "GBP",
       "mastercard_rate": 0.8577,
-      "market_rate": 0.8575900197029114,
-      "diff": 0.00010998029708864099,
+      "market_rate": 0.8575599789619446,
+      "diff": 0.00014002103805543786,
       "opportunity": false,
       "error": null
     },
@@ -116,8 +116,8 @@
       "base": "GBP",
       "target": "EUR",
       "mastercard_rate": 1.1694539,
-      "market_rate": 1.1655000448226929,
-      "diff": 0.003953855177307064,
+      "market_rate": 1.1655999422073364,
+      "diff": 0.0038539577926635094,
       "opportunity": false,
       "error": null
     }
