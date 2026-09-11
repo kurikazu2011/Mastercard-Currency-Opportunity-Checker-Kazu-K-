@@ -1,5 +1,5 @@
 {
-  "fetched_at_utc": "2026-09-11 22:00:26",
+  "fetched_at_utc": "2026-09-11 22:20:21",
   "rates": [
     {
       "pair": "USD/EUR",
@@ -45,19 +45,19 @@
       "pair": "USD/MXN",
       "base": "USD",
       "target": "MXN",
-      "mastercard_rate": 16.8947,
+      "mastercard_rate": 16.9722,
       "market_rate": 16.972000122070312,
-      "diff": -0.07730012207031223,
-      "opportunity": true,
+      "diff": 0.00019987792968834128,
+      "opportunity": false,
       "error": null
     },
     {
       "pair": "MXN/USD",
       "base": "MXN",
       "target": "USD",
-      "mastercard_rate": 0.0592572,
+      "mastercard_rate": 0.0590647,
       "market_rate": 0.05892057344317436,
-      "diff": 0.00033662655682564074,
+      "diff": 0.00014412655682563558,
       "opportunity": false,
       "error": null
     },
