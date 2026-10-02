@@ -1,5 +1,5 @@
 {
-  "fetched_at_utc": "2026-10-02 22:20:21",
+  "fetched_at_utc": "2026-10-02 22:40:23",
   "rates": [
     {
       "pair": "USD/EUR",
@@ -75,9 +75,9 @@
       "pair": "JPY/USD",
       "base": "JPY",
       "target": "USD",
-      "mastercard_rate": 0.0063605,
+      "mastercard_rate": 0.0063719,
       "market_rate": 0.006335930898785591,
-      "diff": 2.456910121440871e-05,
+      "diff": 3.596910121440866e-05,
       "opportunity": false,
       "error": null
     },
@@ -115,10 +115,10 @@
       "pair": "GBP/EUR",
       "base": "GBP",
       "target": "EUR",
-      "mastercard_rate": 1.1756407,
+      "mastercard_rate": 1.1770245,
       "market_rate": 1.176300048828125,
-      "diff": -0.000659348828125017,
-      "opportunity": true,
+      "diff": 0.000724451171874918,
+      "opportunity": false,
       "error": null
     }
   ]
