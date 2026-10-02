@@ -1,13 +1,13 @@
 {
-  "fetched_at_utc": "2026-10-02 02:20:28",
+  "fetched_at_utc": "2026-10-02 02:40:20",
   "rates": [
     {
       "pair": "USD/EUR",
       "base": "USD",
       "target": "EUR",
       "mastercard_rate": 0.884173,
-      "market_rate": 0.8892999887466431,
-      "diff": -0.00512698874664308,
+      "market_rate": 0.88919997215271,
+      "diff": -0.005026972152709974,
       "opportunity": true,
       "error": null
     },
@@ -15,9 +15,9 @@
       "pair": "EUR/USD",
       "base": "EUR",
       "target": "USD",
-      "mastercard_rate": 1.138199,
-      "market_rate": 1.12447988986969,
-      "diff": 0.01371911013031002,
+      "mastercard_rate": 1.1344994,
+      "market_rate": 1.1246063709259033,
+      "diff": 0.009893029074096615,
       "opportunity": false,
       "error": null
     },
@@ -26,8 +26,8 @@
       "base": "USD",
       "target": "CAD",
       "mastercard_rate": 1.4215,
-      "market_rate": 1.4223999977111816,
-      "diff": -0.0008999977111816548,
+      "market_rate": 1.4222700595855713,
+      "diff": -0.0007700595855713033,
       "opportunity": true,
       "error": null
     },
@@ -35,9 +35,9 @@
       "pair": "CAD/USD",
       "base": "CAD",
       "target": "USD",
-      "mastercard_rate": 0.7037298,
-      "market_rate": 0.7030371427536011,
-      "diff": 0.0006926572463988867,
+      "mastercard_rate": 0.7066139,
+      "market_rate": 0.7031013369560242,
+      "diff": 0.003512563043975847,
       "opportunity": false,
       "error": null
     },
@@ -46,8 +46,8 @@
       "base": "USD",
       "target": "MXN",
       "mastercard_rate": 18.071,
-      "market_rate": 18.28700065612793,
-      "diff": -0.21600065612792818,
+      "market_rate": 18.292699813842773,
+      "diff": -0.22169981384277193,
       "opportunity": true,
       "error": null
     },
@@ -56,8 +56,8 @@
       "base": "MXN",
       "target": "USD",
       "mastercard_rate": 0.0557339,
-      "market_rate": 0.05468365177512169,
-      "diff": 0.001050248224878314,
+      "market_rate": 0.05466661602258682,
+      "diff": 0.0010672839774131804,
       "opportunity": false,
       "error": null
     },
@@ -66,8 +66,8 @@
       "base": "USD",
       "target": "JPY",
       "mastercard_rate": 157.55,
-      "market_rate": 157.9459991455078,
-      "diff": -0.39599914550780113,
+      "market_rate": 157.947998046875,
+      "diff": -0.39799804687498863,
       "opportunity": true,
       "error": null
     },
@@ -75,9 +75,9 @@
       "pair": "JPY/USD",
       "base": "JPY",
       "target": "USD",
-      "mastercard_rate": 0.0063605,
-      "market_rate": 0.006331278011202812,
-      "diff": 2.922198879718764e-05,
+      "mastercard_rate": 0.0063959,
+      "market_rate": 0.006331197917461395,
+      "diff": 6.47020825386051e-05,
       "opportunity": false,
       "error": null
     },
@@ -86,8 +86,8 @@
       "base": "USD",
       "target": "GBP",
       "mastercard_rate": 0.757575,
-      "market_rate": 0.7576900124549866,
-      "diff": -0.00011501245498657386,
+      "market_rate": 0.7576599717140198,
+      "diff": -8.497171401977699e-05,
       "opportunity": true,
       "error": null
     },
@@ -96,8 +96,8 @@
       "base": "GBP",
       "target": "USD",
       "mastercard_rate": 1.3314994,
-      "market_rate": 1.3198009729385376,
-      "diff": 0.011698427061462402,
+      "market_rate": 1.3198533058166504,
+      "diff": 0.011646094183349609,
       "opportunity": false,
       "error": null
     },
@@ -106,8 +106,8 @@
       "base": "EUR",
       "target": "GBP",
       "mastercard_rate": 0.8583,
-      "market_rate": 0.8517299890518188,
-      "diff": 0.006570010948181104,
+      "market_rate": 0.8518000245094299,
+      "diff": 0.00649997549057002,
       "opportunity": false,
       "error": null
     },
@@ -115,10 +115,10 @@
       "pair": "GBP/EUR",
       "base": "GBP",
       "target": "EUR",
-      "mastercard_rate": 1.1756407,
-      "market_rate": 1.1735999584197998,
-      "diff": 0.0020407415802001783,
-      "opportunity": false,
+      "mastercard_rate": 1.1712345,
+      "market_rate": 1.1734000444412231,
+      "diff": -0.0021655444412231883,
+      "opportunity": true,
       "error": null
     }
   ]
