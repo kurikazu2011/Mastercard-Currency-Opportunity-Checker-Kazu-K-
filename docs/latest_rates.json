@@ -1,13 +1,13 @@
 {
-  "fetched_at_utc": "2026-10-29 17:00:23",
+  "fetched_at_utc": "2026-10-29 17:20:23",
   "rates": [
     {
       "pair": "USD/EUR",
       "base": "USD",
       "target": "EUR",
       "mastercard_rate": 0.900009,
-      "market_rate": 0.8956000208854675,
-      "diff": 0.004408979114532419,
+      "market_rate": 0.8952000141143799,
+      "diff": 0.004808985885620065,
       "opportunity": false,
       "error": null
     },
@@ -15,10 +15,10 @@
       "pair": "EUR/USD",
       "base": "EUR",
       "target": "USD",
-      "mastercard_rate": 1.1144992,
-      "market_rate": 1.1165698766708374,
-      "diff": -0.002070676670837379,
-      "opportunity": true,
+      "mastercard_rate": 1.1195989,
+      "market_rate": 1.1170687675476074,
+      "diff": 0.0025301324523925306,
+      "opportunity": false,
       "error": null
     },
     {
@@ -26,8 +26,8 @@
       "base": "USD",
       "target": "CAD",
       "mastercard_rate": 1.4071,
-      "market_rate": 1.3970400094985962,
-      "diff": 0.010059990501403826,
+      "market_rate": 1.3973599672317505,
+      "diff": 0.009740032768249529,
       "opportunity": false,
       "error": null
     },
@@ -36,8 +36,8 @@
       "base": "CAD",
       "target": "USD",
       "mastercard_rate": 0.7130125,
-      "market_rate": 0.71576327085495,
-      "diff": -0.002750770854949902,
+      "market_rate": 0.7156352400779724,
+      "diff": -0.002622740077972363,
       "opportunity": true,
       "error": null
     },
@@ -46,8 +46,8 @@
       "base": "USD",
       "target": "MXN",
       "mastercard_rate": 18.6525,
-      "market_rate": 18.804960250854492,
-      "diff": -0.15246025085449233,
+      "market_rate": 18.83846092224121,
+      "diff": -0.18596092224121108,
       "opportunity": true,
       "error": null
     },
@@ -56,8 +56,8 @@
       "base": "MXN",
       "target": "USD",
       "mastercard_rate": 0.0537143,
-      "market_rate": 0.05317745730280876,
-      "diff": 0.000536842697191238,
+      "market_rate": 0.05309208482503891,
+      "diff": 0.0006222151749610896,
       "opportunity": false,
       "error": null
     },
@@ -65,9 +65,9 @@
       "pair": "USD/JPY",
       "base": "USD",
       "target": "JPY",
-      "mastercard_rate": 158.27,
-      "market_rate": 157.88999938964844,
-      "diff": 0.38000061035157273,
+      "mastercard_rate": 157.95,
+      "market_rate": 157.88099670410156,
+      "diff": 0.06900329589842613,
       "opportunity": false,
       "error": null
     },
@@ -76,8 +76,8 @@
       "base": "JPY",
       "target": "USD",
       "mastercard_rate": 0.006344,
-      "market_rate": 0.006333804223686457,
-      "diff": 1.0195776313543133e-05,
+      "market_rate": 0.006333884317427874,
+      "diff": 1.0115682572126201e-05,
       "opportunity": false,
       "error": null
     },
@@ -86,8 +86,8 @@
       "base": "USD",
       "target": "GBP",
       "mastercard_rate": 0.753636,
-      "market_rate": 0.7480400204658508,
-      "diff": 0.0055959795341491425,
+      "market_rate": 0.7479199767112732,
+      "diff": 0.005716023288726779,
       "opportunity": false,
       "error": null
     },
@@ -96,8 +96,8 @@
       "base": "GBP",
       "target": "USD",
       "mastercard_rate": 1.3324983,
-      "market_rate": 1.3368269205093384,
-      "diff": -0.0043286205093384655,
+      "market_rate": 1.3370413780212402,
+      "diff": -0.004543078021240321,
       "opportunity": true,
       "error": null
     },
@@ -106,8 +106,8 @@
       "base": "EUR",
       "target": "GBP",
       "mastercard_rate": 0.8383,
-      "market_rate": 0.8350300192832947,
-      "diff": 0.0032699807167053674,
+      "market_rate": 0.8352800011634827,
+      "diff": 0.003019998836517379,
       "opportunity": false,
       "error": null
     },
@@ -116,8 +116,8 @@
       "base": "GBP",
       "target": "EUR",
       "mastercard_rate": 1.1966017,
-      "market_rate": 1.1970000267028809,
-      "diff": -0.000398326702880869,
+      "market_rate": 1.1967999935150146,
+      "diff": -0.00019829351501465808,
       "opportunity": true,
       "error": null
     }
