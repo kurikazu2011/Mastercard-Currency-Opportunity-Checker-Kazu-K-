@@ -1,125 +1,125 @@
 {
-  "fetched_at_utc": "2026-11-17 00:00:27",
+  "fetched_at_utc": "2026-11-17 00:20:31",
   "rates": [
     {
       "pair": "USD/EUR",
       "base": "USD",
       "target": "EUR",
-      "mastercard_rate": 0.907194,
+      "mastercard_rate": null,
       "market_rate": null,
       "diff": null,
       "opportunity": null,
-      "error": "Yahoo Finance returned no data for USDEUR=X"
+      "error": "Mastercard API failed: 403"
     },
     {
       "pair": "EUR/USD",
       "base": "EUR",
       "target": "USD",
-      "mastercard_rate": 1.1073989,
+      "mastercard_rate": null,
       "market_rate": null,
       "diff": null,
       "opportunity": null,
-      "error": "Yahoo Finance returned no data for EURUSD=X"
+      "error": "Mastercard API failed: 403"
     },
     {
       "pair": "USD/CAD",
       "base": "USD",
       "target": "CAD",
-      "mastercard_rate": 1.4273,
-      "market_rate": 1.4294999837875366,
-      "diff": -0.002199983787536608,
-      "opportunity": true,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Mastercard API failed: 403"
     },
     {
       "pair": "CAD/USD",
       "base": "CAD",
       "target": "USD",
-      "mastercard_rate": 0.7029383,
-      "market_rate": 0.6995453238487244,
-      "diff": 0.0033929761512756507,
-      "opportunity": false,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Mastercard API failed: 403"
     },
     {
       "pair": "USD/MXN",
       "base": "USD",
       "target": "MXN",
-      "mastercard_rate": 18.5525,
-      "market_rate": 18.516000747680664,
-      "diff": 0.036499252319334374,
-      "opportunity": false,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Mastercard API failed: 403"
     },
     {
       "pair": "MXN/USD",
       "base": "MXN",
       "target": "USD",
-      "mastercard_rate": 0.0539933,
-      "market_rate": 0.05400734394788742,
-      "diff": -1.4043947887419639e-05,
-      "opportunity": true,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Mastercard API failed: 403"
     },
     {
       "pair": "USD/JPY",
       "base": "USD",
       "target": "JPY",
-      "mastercard_rate": 160.21,
-      "market_rate": 159.50799560546875,
-      "diff": 0.702004394531258,
-      "opportunity": false,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Mastercard API failed: 403"
     },
     {
       "pair": "JPY/USD",
       "base": "JPY",
       "target": "USD",
-      "mastercard_rate": 0.0062676,
-      "market_rate": 0.0062692780047655106,
-      "diff": -1.6780047655106517e-06,
-      "opportunity": true,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Mastercard API failed: 403"
     },
     {
       "pair": "USD/GBP",
       "base": "USD",
       "target": "GBP",
-      "mastercard_rate": 0.757403,
+      "mastercard_rate": null,
       "market_rate": null,
       "diff": null,
       "opportunity": null,
-      "error": "Yahoo Finance returned no data for USDGBP=X"
+      "error": "Mastercard API failed: 403"
     },
     {
       "pair": "GBP/USD",
       "base": "GBP",
       "target": "USD",
-      "mastercard_rate": 1.3256991,
+      "mastercard_rate": null,
       "market_rate": null,
       "diff": null,
       "opportunity": null,
-      "error": "Yahoo Finance returned no data for GBPUSD=X"
+      "error": "Mastercard API failed: 403"
     },
     {
       "pair": "EUR/GBP",
       "base": "EUR",
       "target": "GBP",
-      "mastercard_rate": 0.8366,
-      "market_rate": 0.8341100215911865,
-      "diff": 0.002489978408813487,
-      "opportunity": false,
-      "error": null
+      "mastercard_rate": null,
+      "market_rate": null,
+      "diff": null,
+      "opportunity": null,
+      "error": "Mastercard API failed: 403"
     },
     {
       "pair": "GBP/EUR",
       "base": "GBP",
       "target": "EUR",
-      "mastercard_rate": 1.1993284,
+      "mastercard_rate": null,
       "market_rate": null,
       "diff": null,
       "opportunity": null,
-      "error": "Yahoo Finance returned no data for GBPEUR=X"
+      "error": "Mastercard API failed: 403"
     }
   ]
 }
